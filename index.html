@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ReelCraft &amp; 4K Hub — Wallpapers &amp; Reels Assets</title>
+  <title>Viral Content Hub — Telegram Bot &amp; Previews</title>
   <meta
     name="description"
-    content="Explore 4K wallpapers, short reels clips, and creator assets on Telegram via @ViralcontentVIP3_bot."
+    content="Explore trending short clips, 4K wallpapers, and creator packs via @ViralcontentVIP3_bot on Telegram."
   />
 
   <!-- Apna purana Google verification meta tag yahan zaroor rakhein -->
@@ -61,9 +61,10 @@
     }
 
     .brand {
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.3px;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
       background: var(--grad-primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -113,7 +114,7 @@
     }
 
     h1 {
-      font-size: 29px;
+      font-size: 31px;
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 10px;
@@ -141,7 +142,6 @@
       box-shadow: 0 8px 22px rgba(16, 185, 129, 0.35);
     }
 
-    /* Filter Options Bar */
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
@@ -232,21 +232,6 @@
       object-fit: cover;
     }
 
-    .qr-box {
-      max-width: 230px;
-      margin: 0 auto;
-      padding: 12px;
-      background: #ffffff;
-      border-radius: 14px;
-    }
-
-    .qr-box img {
-      width: 100%;
-      display: block;
-      max-height: 210px;
-      object-fit: contain;
-    }
-
     .post-action {
       display: inline-block;
       margin-top: 14px;
@@ -269,16 +254,16 @@
 <body>
   <div class="container">
     <div class="topbar">
-      <span class="brand">REELCRAFT &amp; 4K HUB</span>
+      <span class="brand">Viral Content Hub</span>
       <span class="status-pill">● Bot Active</span>
     </div>
 
     <header class="hero">
-      <span class="tag">✨ Creator Assets &amp; 4K Packs</span>
-      <h1>4K Wallpapers &amp; Reels Assets on Telegram</h1>
+      <span class="tag">✨ @ViralcontentVIP3_bot Hub</span>
+      <h1>Viral Content Hub</h1>
       <p>
-        Pick a category below, preview sample media, or open the Telegram bot directly for more
-        organized packs.
+        Watch short sample clips, browse 4K wallpapers, and open @ViralcontentVIP3_bot on Telegram
+        for full updates.
       </p>
       <a
         class="btn-telegram"
@@ -290,48 +275,22 @@
       </a>
     </header>
 
-    <!-- Interactive Category Options -->
+    <!-- Category Options -->
     <div class="filter-bar" role="tablist" aria-label="Content options">
       <button class="filter-btn active" type="button" onclick="filterCards('all', this)">All Options</button>
-      <button class="filter-btn" type="button" onclick="filterCards('wallpapers', this)">Wallpapers</button>
-      <button class="filter-btn" type="button" onclick="filterCards('clips', this)">Reels Clips</button>
-      <button class="filter-btn" type="button" onclick="filterCards('qr', this)">QR Access</button>
+      <button class="filter-btn" type="button" onclick="filterCards('videos', this)">3 Videos</button>
+      <button class="filter-btn" type="button" onclick="filterCards('photos', this)">Photos</button>
     </div>
 
-    <!-- Option 1: Wallpapers -->
-    <article class="post-card" data-category="wallpapers">
+    <!-- Video 1 -->
+    <article class="post-card" data-category="videos">
       <div class="post-meta">
-        <span class="post-badge">Wallpaper Pack</span>
-        <span class="mini-chip">Mobile &amp; Desktop</span>
+        <span class="post-badge">Video Clip 01</span>
+        <span class="mini-chip">Short Clip</span>
       </div>
-      <h3>4K Amoled Dark Wallpapers</h3>
+      <h3>Trending Sample Clip 1</h3>
       <p>
-        Crisp dark screen backgrounds for clean setups. Browse more curated wallpapers inside the
-        Telegram bot.
-      </p>
-      <div class="media-frame">
-        <img src="wall1.jpg" alt="4K Amoled Dark Wallpaper" />
-      </div>
-      <a
-        class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Explore Wallpapers in Bot →
-      </a>
-    </article>
-
-    <!-- Option 2: Reels Clips -->
-    <article class="post-card" data-category="clips">
-      <div class="post-meta">
-        <span class="post-badge">Reels Clip</span>
-        <span class="mini-chip">Short Edit</span>
-      </div>
-      <h3>Short Reels Editing Clip</h3>
-      <p>
-        Lightweight sample clip for short-form edits. Tap play to watch or open the bot for more
-        clips.
+        Short sample clip preview. Tap play to watch or open @ViralcontentVIP3_bot for more.
       </p>
       <div class="media-frame">
         <video controls muted playsinline preload="metadata">
@@ -345,27 +304,110 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        Get More Clips in Bot →
+        Open @ViralcontentVIP3_bot →
       </a>
     </article>
 
-    <!-- Option 3: QR Code Access -->
-    <article class="post-card" data-category="qr">
+    <!-- Video 2 -->
+    <article class="post-card" data-category="videos">
       <div class="post-meta">
-        <span class="post-badge">Quick Scan</span>
-        <span class="mini-chip">@ViralcontentVIP3_bot</span>
+        <span class="post-badge">Video Clip 02</span>
+        <span class="mini-chip">Short Clip</span>
       </div>
-      <h3>Scan QR for Direct Bot Access</h3>
+      <h3>Trending Sample Clip 2</h3>
       <p>
-        Scan this QR code with your phone camera or scanner to open the Telegram bot in one step.
+        Second short preview clip. More updates and packs are available inside the Telegram bot.
       </p>
-      <div class="qr-box">
-        <img src="qr-bot.png" alt="QR Code for @ViralcontentVIP3_bot" />
+      <div class="media-frame">
+        <video controls muted playsinline preload="metadata">
+          <source src="clip2.mp4" type="video/mp4" />
+          Aapka browser video play nahi kar pa raha hai.
+        </video>
       </div>
+      <a
+        class="post-action"
+        href="https://t.me/ViralcontentVIP3_bot"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open @ViralcontentVIP3_bot →
+      </a>
+    </article>
+
+    <!-- Video 3 -->
+    <article class="post-card" data-category="videos">
+      <div class="post-meta">
+        <span class="post-badge">Video Clip 03</span>
+        <span class="mini-chip">Short Clip</span>
+      </div>
+      <h3>Trending Sample Clip 3</h3>
+      <p>
+        Third short sample preview. Tap below to launch @ViralcontentVIP3_bot on Telegram.
+      </p>
+      <div class="media-frame">
+        <video controls muted playsinline preload="metadata">
+          <source src="clip3.mp4" type="video/mp4" />
+          Aapka browser video play nahi kar pa raha hai.
+        </video>
+      </div>
+      <a
+        class="post-action"
+        href="https://t.me/ViralcontentVIP3_bot"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open @ViralcontentVIP3_bot →
+      </a>
+    </article>
+
+    <!-- Photo 1 -->
+    <article class="post-card" data-category="photos">
+      <div class="post-meta">
+        <span class="post-badge">Photo 01</span>
+        <span class="mini-chip">4K Wallpaper</span>
+      </div>
+      <h3>4K Wallpaper Preview 1</h3>
+      <p>
+        Clean wallpaper preview for mobile and desktop screens. More items inside the bot.
+      </p>
+      <div class="media-frame">
+        <img src="wall1.jpg" alt="4K Wallpaper Preview 1" />
+      </div>
+      <a
+        class="post-action"
+        href="https://t.me/ViralcontentVIP3_bot"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get More in Bot →
+      </a>
+    </article>
+
+    <!-- Photo 2 -->
+    <article class="post-card" data-category="photos">
+      <div class="post-meta">
+        <span class="post-badge">Photo 02</span>
+        <span class="mini-chip">4K Wallpaper</span>
+      </div>
+      <h3>4K Wallpaper Preview 2</h3>
+      <p>
+        Second wallpaper preview. Open @ViralcontentVIP3_bot on Telegram for full collections.
+      </p>
+      <div class="media-frame">
+        <img src="wall2.jpg" alt="4K Wallpaper Preview 2" />
+      </div>
+      <a
+        class="post-action"
+        href="https://t.me/ViralcontentVIP3_bot"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get More in Bot →
+      </a>
     </article>
 
     <footer class="footer">
-      ReelCraft &amp; 4K Hub · Telegram Bot: @ViralcontentVIP3_bot
+      Viral Content Hub · Telegram Bot: @ViralcontentVIP3_bot
     </footer>
   </div>
 
@@ -392,4 +434,5 @@
     }
   </script>
 </body>
-</html>
+      </html>
+  
