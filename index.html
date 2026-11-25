@@ -3,53 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-site-verification" content="GJi0EvBTYP8FKhg6XLVV2fNzZMIV89zR1_AZlKt7bKY" />
-  <meta name="description" content="Explore 4K wallpapers, reels editing templates, and creator assets with quick Telegram bot access and safe demo previews." />
-  <title>4K Wallpapers & Reels Assets Guide on Telegram</title>
+  <title>ReelCraft &amp; 4K Hub — Wallpapers &amp; Reels Assets</title>
+  <meta
+    name="description"
+    content="Explore 4K wallpapers, short reels clips, and creator assets on Telegram via @ViralcontentVIP3_bot."
+  />
+
+  <!-- Apna purana Google verification meta tag yahan zaroor rakhein -->
+  <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
+
   <style>
+    :root {
+      --bg-main: #07070c;
+      --bg-card: rgba(20, 22, 34, 0.78);
+      --border-glow: rgba(168, 85, 247, 0.28);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --grad-primary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%);
+      --grad-btn: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      --accent-cyan: #38bdf8;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      background-color: #0f172a;
-      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(139, 92, 246, 0.22), transparent 38%),
+        radial-gradient(circle at 85% 25%, rgba(236, 72, 153, 0.16), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.12), transparent 45%);
+      color: var(--text-main);
       line-height: 1.6;
-      padding: 20px;
+      padding: 20px 14px 50px;
+      min-height: 100vh;
     }
 
     .container {
-      max-width: 820px;
+      max-width: 720px;
       margin: 0 auto;
-      background-color: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 14px;
-      padding: 28px 22px;
     }
 
-    .badge {
-      display: inline-block;
-      background-color: #0ea5e9;
-      color: #ffffff;
+    /* Top Nav Pill */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(17, 19, 30, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px 16px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      background: var(--grad-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .status-pill {
       font-size: 12px;
-      font-weight: bold;
-      padding: 5px 12px;
+      color: #6ee7b7;
+      background: rgba(16, 185, 129, 0.14);
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-glow);
+      border-radius: 22px;
+      padding: 28px 22px;
+      margin-bottom: 28px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--grad-primary);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #e9d5ff;
+      background: rgba(139, 92, 246, 0.2);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      padding: 4px 12px;
       border-radius: 999px;
       margin-bottom: 14px;
     }
 
     h1 {
-      font-size: 28px;
-      line-height: 1.25;
-      margin-bottom: 12px;
-      color: #ffffff;
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      letter-spacing: -0.4px;
     }
 
-    .subtitle {
-      color: #cbd5e1;
+    .hero p {
+      color: var(--text-muted);
       font-size: 15px;
       margin-bottom: 22px;
     }
@@ -58,177 +132,209 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 28px;
     }
 
-    .btn-primary,
-    .btn-secondary {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 10px;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 12px;
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
       border: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .btn-primary {
-      background-color: #22c55e;
-      color: #052e16;
+    .btn:active {
+      transform: scale(0.98);
     }
 
-    .btn-secondary {
-      background-color: #334155;
-      color: #f8fafc;
+    .btn-telegram {
+      background: var(--grad-btn);
+      color: #ffffff;
+      box-shadow: 0 8px 22px rgba(16, 185, 129, 0.35);
     }
 
-    .section-title {
-      font-size: 19px;
-      margin-bottom: 14px;
-      color: #f8fafc;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-bottom: 26px;
-    }
-
-    .card {
-      background-color: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 12px;
-      padding: 16px;
-    }
-
-    .demo-box {
-      height: 110px;
-      border-radius: 8px;
+    /* Section Header */
+    .section-head {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 14px;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
-      color: #ffffff;
+      justify-content: space-between;
+      margin: 26px 0 14px;
     }
 
-    .demo-box.alt {
-      background: linear-gradient(135deg, #0f766e, #22c55e);
+    .section-head h2 {
+      font-size: 19px;
+      font-weight: 700;
     }
 
-    .demo-box.warm {
-      background: linear-gradient(135deg, #b45309, #f59e0b);
-    }
-
-    .card h3 {
-      font-size: 16px;
-      margin-bottom: 6px;
-      color: #ffffff;
-    }
-
-    .card p {
-      font-size: 13px;
-      color: #94a3b8;
-    }
-
-    .status-msg {
-      font-size: 13px;
-      color: #4ade80;
-      min-height: 20px;
-      margin-bottom: 16px;
-    }
-
-    footer {
-      border-top: 1px solid #334155;
-      padding-top: 16px;
+    .section-head span {
       font-size: 12px;
-      color: #94a3b8;
+      color: var(--accent-cyan);
+    }
+
+    /* Post Cards */
+    .post-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .post-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .post-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #f472b6;
+    }
+
+    .post-card h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .post-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .media-frame {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #050508;
+    }
+
+    .media-frame img,
+    .media-frame video {
+      width: 100%;
+      display: block;
+      max-height: 440px;
+      object-fit: cover;
+    }
+
+    .post-action {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 32px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      font-size: 13px;
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <span class="badge">Creator Assets &amp; Bot Guide</span>
-    <h1>4K Wallpapers &amp; Reels Assets on Telegram</h1>
-    <p class="subtitle">
-      Browse clean sample previews, check quick starter tips, and jump straight to the Telegram bot for organized packs and creator resources.
-    </p>
-
-    <div class="btn-group">
-      <!-- Apna real Telegram bot username yahan daalein -->
-      <a class="btn-primary" href="https://t.me/YourBotUsername" target="_blank" rel="noopener noreferrer">
-        Open Telegram Bot
-      </a>
-      <button class="btn-secondary" type="button" onclick="copyPageLink()">
-        Copy Page Link
-      </button>
+  <div class="container">
+    <!-- Top Bar -->
+    <div class="topbar">
+      <span class="brand">REELCRAFT &amp; 4K HUB</span>
+      <span class="status-pill">● Bot Active</span>
     </div>
 
-    <p id="statusMsg" class="status-msg"></p>
-
-    <h2 class="section-title">Safe Demo Previews</h2>
-    <div class="grid">
-      <article class="card">
-        <div class="demo-box" role="img" aria-label="4K Amoled Wallpaper Demo Preview">
-          4K Wallpaper Sample
-        </div>
-        <h3>4K Amoled Wallpapers</h3>
-        <p>Crisp dark and clean screen backgrounds designed for mobile and desktop displays.</p>
-      </article>
-
-      <article class="card">
-        <div class="demo-box alt" role="img" aria-label="Reels Editing Transitions Demo Preview">
-          Reels Asset Sample
-        </div>
-        <h3>Reels Editing Assets</h3>
-        <p>Sample transition ideas, overlays, and short-form video layout references.</p>
-      </article>
-
-      <article class="card">
-        <div class="demo-box warm" role="img" aria-label="Creator Workflow Guide Demo Preview">
-          Quick Guide Sample
-        </div>
-        <h3>Fast Bot Access</h3>
-        <p>Step-by-step flow to open the bot, browse categories, and share the guide link.</p>
-      </article>
-    </div>
-
-    <footer>
+    <!-- Hero Card -->
+    <header class="hero">
+      <span class="tag">✨ Creator Assets &amp; 4K Packs</span>
+      <h1>4K Wallpapers &amp; Reels Assets on Telegram</h1>
       <p>
-        Note: This page shares clean demo previews and general guidance for discovering Telegram resources safely.
+        Clean sample previews, short editing clips, and direct access to organized creator packs
+        inside our Telegram bot.
       </p>
+      <div class="btn-group">
+        <a
+          class="btn btn-telegram"
+          href="https://t.me/ViralcontentVIP3_bot"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          🚀 Open Telegram Bot
+        </a>
+      </div>
+    </header>
+
+    <div class="section-head">
+      <h2>Latest Previews</h2>
+      <span>Updated Daily</span>
+    </div>
+
+    <!-- Photo Post Card -->
+    <article class="post-card">
+      <div class="post-meta">
+        <span class="post-badge">Wallpaper Pack</span>
+      </div>
+      <h3>4K Amoled Dark Wallpapers</h3>
+      <p>
+        Crisp dark screen backgrounds made for mobile and desktop displays. Full pack available on
+        the bot.
+      </p>
+      <div class="media-frame">
+        <!-- GitHub mein upload ki gayi photo ka naam yahan likhein -->
+        <img src="wall1.jpg" alt="4K Amoled Dark Wallpaper" />
+      </div>
+      <a
+        class="post-action"
+        href="https://t.me/ViralcontentVIP3_bot"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download Full Pack in Bot →
+      </a>
+    </article>
+
+    <!-- Video Clip Post Card -->
+    <article class="post-card">
+      <div class="post-meta">
+        <span class="post-badge">Reels Clip</span>
+      </div>
+      <h3>Short Reels Editing Clip</h3>
+      <p>
+        Smooth short-form transition preview. Tap play to watch or jump to Telegram for more clips.
+      </p>
+      <div class="media-frame">
+        <!-- GitHub mein upload ki gayi chhoti video ka naam yahan likhein -->
+        <video controls muted playsinline preload="metadata">
+          <source src="clip1.mp4" type="video/mp4" />
+          Aapka browser video play nahi kar pa raha hai.
+        </video>
+      </div>
+      <a
+        class="post-action"
+        href="https://t.me/ViralcontentVIP3_bot"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get More Clips in Bot →
+      </a>
+    </article>
+
+    <footer class="footer">
+      ReelCraft &amp; 4K Hub · Telegram Bot: @ViralcontentVIP3_bot
     </footer>
-  </main>
-
-  <script>
-    function copyPageLink() {
-      const url = window.location.href;
-      const msgEl = document.getElementById("statusMsg");
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(() => {
-          msgEl.textContent = "Page link copied!";
-        }).catch(() => {
-          fallbackCopy(url, msgEl);
-        });
-      } else {
-        fallbackCopy(url, msgEl);
-      }
-    }
-
-    function fallbackCopy(text, msgEl) {
-      const tempInput = document.createElement("input");
-      tempInput.value = text;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      document.execCommand("copy");
-      document.body.removeChild(tempInput);
-      msgEl.textContent = "Page link copied!";
-    }
-  </script>
+  </div>
 </body>
 </html>
