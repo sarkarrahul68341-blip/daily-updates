@@ -74,9 +74,9 @@
       100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
     }
 
-    @keyframes deepSwirlSpin {
+    @keyframes glassSwirl {
       0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-      50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.16); }
+      50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.15); }
       100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
     }
 
@@ -187,52 +187,64 @@
     .post-card h3 { font-size: 18px; margin-bottom: 6px; }
     .post-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 14px; }
 
-    /* Deep ghola-ghola lock box */
-    .lock-box {
+    /* Private reel style ghola preview while locked */
+    .reel-lock-wrap {
       position: relative;
-      border: 1px solid rgba(245, 158, 11, 0.5);
-      background:
-        radial-gradient(circle at 20% 25%, rgba(168, 85, 247, 0.5), transparent 55%),
-        radial-gradient(circle at 80% 75%, rgba(236, 72, 153, 0.45), transparent 58%),
-        #070912;
+      width: 100%;
       border-radius: 14px;
-      padding: 24px 14px;
-      text-align: center;
       overflow: hidden;
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      background: #070912;
+      min-height: 270px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .lock-box::before {
-      content: "";
+    .reel-bg-video {
       position: absolute;
-      width: 290px;
-      height: 290px;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(22px) brightness(0.65) saturate(135%);
+      transform: scale(1.12);
+    }
+
+    .reel-ghola-swirl {
+      position: absolute;
+      width: 280px;
+      height: 280px;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       border-radius: 50%;
       background: conic-gradient(
         from 0deg,
-        rgba(168, 85, 247, 0.65),
-        rgba(236, 72, 153, 0.65),
-        rgba(245, 158, 11, 0.6),
-        rgba(56, 189, 248, 0.5),
-        rgba(168, 85, 247, 0.65)
+        rgba(168, 85, 247, 0.45),
+        rgba(236, 72, 153, 0.45),
+        rgba(245, 158, 11, 0.4),
+        rgba(56, 189, 248, 0.35),
+        rgba(168, 85, 247, 0.45)
       );
       filter: blur(28px);
-      animation: deepSwirlSpin 6s linear infinite;
+      animation: glassSwirl 6.5s linear infinite;
       pointer-events: none;
-      z-index: 0;
     }
 
     .lock-content {
       position: relative;
-      z-index: 1;
-      backdrop-filter: blur(18px) saturate(140%);
-      -webkit-backdrop-filter: blur(18px) saturate(140%);
-      background: rgba(8, 10, 18, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      z-index: 2;
+      width: 92%;
+      max-width: 440px;
+      margin: 18px auto;
+      padding: 18px 14px;
+      text-align: center;
       border-radius: 12px;
-      padding: 18px 12px;
+      background: rgba(9, 11, 20, 0.68);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
     }
 
     .lock-title { font-size: 15px; font-weight: 700; color: #fde68a; margin-bottom: 6px; }
@@ -299,7 +311,7 @@
       width: 100%;
       border-radius: 14px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       background: #050508;
     }
 
@@ -311,45 +323,21 @@
       object-fit: cover;
     }
 
-    /* Deep ghola glass layer over unlocked video */
-    .deep-glass-overlay {
+    /* Optional ghola glass toggle after unlock */
+    .optional-glass {
       position: absolute;
       inset: 0;
       z-index: 2;
       pointer-events: none;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.22), transparent 55%),
-        radial-gradient(circle at 75% 75%, rgba(168, 85, 247, 0.24), transparent 60%),
-        rgba(12, 14, 24, 0.22);
+      opacity: 0;
+      background: rgba(12, 14, 24, 0.22);
       backdrop-filter: blur(18px) saturate(140%);
       -webkit-backdrop-filter: blur(18px) saturate(140%);
       transition: opacity 0.25s ease;
     }
 
-    .deep-glass-overlay::before {
-      content: "";
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      background: conic-gradient(
-        from 0deg,
-        rgba(168, 85, 247, 0.42),
-        rgba(236, 72, 153, 0.42),
-        rgba(245, 158, 11, 0.38),
-        rgba(56, 189, 248, 0.34),
-        rgba(168, 85, 247, 0.42)
-      );
-      filter: blur(26px);
-      animation: deepSwirlSpin 7s linear infinite;
-    }
-
-    .deep-glass-overlay.clear-mode {
-      opacity: 0;
+    .optional-glass.active-glass {
+      opacity: 1;
     }
 
     .video-toolbar {
@@ -406,7 +394,7 @@
 
     <header class="hero">
       <h1>Viral Content Hub</h1>
-      <p>Photo open hai, aur video unlock karne ke liye PIN <strong>123</strong> likhein ya Buy Now dabayein.</p>
+      <p>Photo open hai, aur private reel style video unlock karne ke liye PIN <strong>123</strong> likhein ya Buy Now dabayein.</p>
       <a class="btn-telegram" href="https://t.me/ViralcontentVIP3_bot?start=gh_hub" target="_blank" rel="noopener noreferrer">
         🚀 Open Telegram Bot
       </a>
@@ -423,15 +411,18 @@
     <article class="post-card">
       <div class="post-meta">
         <span class="post-badge">Video Clip 01</span>
-        <span class="mini-chip">🔒 PIN Locked</span>
+        <span class="mini-chip">🔒 Private Preview</span>
       </div>
       <h3>Trending Sample Clip (HD2)</h3>
-      <p>PIN <strong>123</strong> daal kar video unlock karein ya Buy Now par tap karein.</p>
+      <p>Lock mein ghola-ghola dikhega; PIN <strong>123</strong> daalte hi video saaf aur play hoga.</p>
 
-      <div id="lock-v1" class="lock-box">
+      <div id="lock-v1" class="reel-lock-wrap">
+        <video class="reel-bg-video" autoplay muted loop playsinline preload="metadata" src="HD2.mp4"></video>
+        <div class="reel-ghola-swirl" aria-hidden="true"></div>
+
         <div class="lock-content">
-          <div class="lock-title">🔒 Demo Preview Locked</div>
-          <div class="lock-sub">Enter PIN 123 to open HD2.mp4</div>
+          <div class="lock-title">🔒 Private Clip Ghola Preview</div>
+          <div class="lock-sub">PIN 123 daal kar saaf video dekhein</div>
           <div class="pin-show-badge">PIN: 123</div>
           <div class="pin-row">
             <input
@@ -459,14 +450,14 @@
 
       <div id="player-v1" class="hidden">
         <div class="media-frame">
-          <div id="glass-v1" class="deep-glass-overlay" aria-hidden="true"></div>
+          <div id="glass-v1" class="optional-glass" aria-hidden="true"></div>
           <video id="vid-v1" controls playsinline preload="metadata" src="HD2.mp4">
             Aapka browser video play nahi kar pa raha hai.
           </video>
         </div>
         <div class="video-toolbar">
           <button id="glass-btn-v1" class="glass-toggle-btn" type="button" onclick="toggleGlass('v1')">
-            🪟 Clear Glass
+            🌫️ Ghola Glass
           </button>
           <button class="lock-again-btn" type="button" onclick="lockVideo('v1')">🔒 Lock Again</button>
         </div>
@@ -499,8 +490,8 @@
         if (err) err.textContent = "";
         lockBox.classList.add("hidden");
         playerBox.classList.remove("hidden");
-        if (glass) glass.classList.remove("clear-mode");
-        if (glassBtn) glassBtn.textContent = "🪟 Clear Glass";
+        if (glass) glass.classList.remove("active-glass");
+        if (glassBtn) glassBtn.textContent = "🌫️ Ghola Glass";
         if (video) {
           video.load();
           video.play().catch(function () {});
@@ -515,11 +506,11 @@
       var glassBtn = document.getElementById("glass-btn-" + id);
       if (!glass) return;
 
-      glass.classList.toggle("clear-mode");
+      glass.classList.toggle("active-glass");
       if (glassBtn) {
-        glassBtn.textContent = glass.classList.contains("clear-mode")
-          ? "🌫️ Deep Glass"
-          : "🪟 Clear Glass";
+        glassBtn.textContent = glass.classList.contains("active-glass")
+          ? "🪟 Clear Video"
+          : "🌫️ Ghola Glass";
       }
     }
 
