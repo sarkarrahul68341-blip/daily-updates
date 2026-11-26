@@ -6,7 +6,7 @@
   <title>Viral Content Hub — Telegram Bot &amp; Previews</title>
   <meta
     name="description"
-    content="Browse HD1 photo, unlock PIN-protected HD2 video clip, and jump straight into @ViralcontentVIP3_bot on Telegram."
+    content="Browse HD1 photo, unlock PIN-protected video clips, and jump straight into @ViralcontentVIP3_bot on Telegram."
   />
 
   <!-- Verification tag for pujaridty@gmail.com -->
@@ -115,55 +115,29 @@
     }
 
     @keyframes floatOrbA {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-      }
-      50% {
-        transform: translate(18px, -22px) scale(1.12);
-      }
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(18px, -22px) scale(1.12); }
     }
 
     @keyframes floatOrbB {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-      }
-      50% {
-        transform: translate(-20px, 18px) scale(1.1);
-      }
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-20px, 18px) scale(1.1); }
     }
 
     @keyframes fullScreenSwirl {
-      0% {
-        transform: translate(-50%, -50%) rotate(0deg) scale(1);
-      }
-      50% {
-        transform: translate(-50%, -50%) rotate(180deg) scale(1.08);
-      }
-      100% {
-        transform: translate(-50%, -50%) rotate(360deg) scale(1);
-      }
+      0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+      50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.08); }
+      100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
     }
 
     @keyframes cardEnter {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes pulseDot {
-      0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.55;
-        transform: scale(0.92);
-      }
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(0.92); }
     }
 
     .container {
@@ -634,8 +608,8 @@
       <span class="tag">✨ @ViralcontentVIP3_bot Hub</span>
       <h1>Viral Content Hub</h1>
       <p>
-        Browse open photo at the top, unlock HD2 video clip with PIN <strong>123</strong>, or tap
-        Buy Now to open @ViralcontentVIP3_bot on Telegram.
+        Browse open photo at the top, unlock video clips with PIN <strong>123</strong>, or tap Buy Now
+        to open @ViralcontentVIP3_bot on Telegram.
       </p>
       <div class="hero-actions">
         <a
@@ -653,7 +627,7 @@
     <div id="feed" class="filter-bar" role="tablist" aria-label="Content options">
       <button class="filter-btn active" type="button" onclick="filterCards('all', this)">All Options</button>
       <button class="filter-btn" type="button" onclick="filterCards('photos', this)">1 Photo</button>
-      <button class="filter-btn" type="button" onclick="filterCards('videos', this)">1 Locked Video</button>
+      <button class="filter-btn" type="button" onclick="filterCards('videos', this)">3 Locked Videos</button>
     </div>
 
     <!-- Open Photo Card Up-Front (HD1.png - No Lock) -->
@@ -663,32 +637,32 @@
       </div>
     </article>
 
-    <!-- Locked Video (HD2.mp4) -->
+    <!-- Locked Video Box 1 -->
     <article class="post-card" data-category="videos">
       <div class="post-meta">
         <span class="post-badge">Video Clip 01</span>
         <span class="mini-chip">🔒 PIN Locked</span>
       </div>
-      <h3>Trending Sample Clip (HD2)</h3>
+      <h3>Trending Sample Clip 1</h3>
       <p>This video is locked. Enter PIN <strong>123</strong> or tap Buy Now.</p>
 
       <div id="lock-v1" class="lock-box">
         <div class="lock-content">
           <div class="lock-title">🔒 Demo Preview Locked</div>
-          <div class="lock-sub">Enter PIN to open HD2.mp4</div>
+          <div class="lock-sub">Enter PIN to open Video Clip 01</div>
           <div class="pin-show-badge">PIN: 123</div>
-          <div class="pin-row">
-            <input id="pin-input-v1" class="pin-input" type="password" inputmode="numeric" maxlength="8" placeholder="123" />
-            <button class="pin-btn" type="button" onclick="unlockVideo('v1')">Unlock</button>
+          <form class="pin-row" onsubmit="event.preventDefault(); unlockVideo('v1');">
+            <input id="pin-input-v1" class="pin-input" type="text" inputmode="numeric" maxlength="8" placeholder="123" autocomplete="off" />
+            <button class="pin-btn" type="submit">Unlock</button>
             <a
               class="buy-now-btn"
-              href="https://t.me/ViralcontentVIP3_bot?start=buy_hd2"
+              href="https://t.me/ViralcontentVIP3_bot?start=buy_clip1"
               target="_blank"
               rel="noopener noreferrer"
             >
               Buy Now
             </a>
-          </div>
+          </form>
           <div id="pin-err-v1" class="pin-error"></div>
         </div>
       </div>
@@ -709,59 +683,49 @@
         </div>
       </div>
 
-      <a class="post-action" href="https://t.me/ViralcontentVIP3_bot?start=gh_hd2" target="_blank" rel="noopener noreferrer">
+      <a class="post-action" href="https://t.me/ViralcontentVIP3_bot?start=gh_clip1" target="_blank" rel="noopener noreferrer">
         Open @ViralcontentVIP3_bot →
       </a>
     </article>
 
-    <footer class="footer">
-      Viral Content Hub · Telegram Bot: @ViralcontentVIP3_bot
-    </footer>
-  </div>
+    <!-- Locked Video Box 2 -->
+    <article class="post-card" data-category="videos">
+      <div class="post-meta">
+        <span class="post-badge">Video Clip 02</span>
+        <span class="mini-chip">🔒 PIN Locked</span>
+      </div>
+      <h3>Trending Sample Clip 2</h3>
+      <p>This video is locked. Enter PIN <strong>123</strong> or tap Buy Now.</p>
 
-  <script>
-    var VIDEO_PIN = "123";
+      <div id="lock-v2" class="lock-box">
+        <div class="lock-content">
+          <div class="lock-title">🔒 Demo Preview Locked</div>
+          <div class="lock-sub">Enter PIN to open Video Clip 02</div>
+          <div class="pin-show-badge">PIN: 123</div>
+          <form class="pin-row" onsubmit="event.preventDefault(); unlockVideo('v2');">
+            <input id="pin-input-v2" class="pin-input" type="text" inputmode="numeric" maxlength="8" placeholder="123" autocomplete="off" />
+            <button class="pin-btn" type="submit">Unlock</button>
+            <a
+              class="buy-now-btn"
+              href="https://t.me/ViralcontentVIP3_bot?start=buy_clip2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Buy Now
+            </a>
+          </form>
+          <div id="pin-err-v2" class="pin-error"></div>
+        </div>
+      </div>
 
-    function unlockVideo(id) {
-      var input = document.getElementById("pin-input-" + id);
-      var err = document.getElementById("pin-err-" + id);
-      var lockBox = document.getElementById("lock-" + id);
-      var playerBox = document.getElementById("player-" + id);
-      var glass = document.getElementById("glass-" + id);
-      var glassBtn = document.getElementById("glass-btn-" + id);
-
-      if (input.value.trim() === VIDEO_PIN) {
-        err.textContent = "";
-        lockBox.classList.add("hidden");
-        playerBox.classList.remove("hidden");
-        if (glass) {
-          glass.classList.remove("clear-mode");
-        }
-        if (glassBtn) {
-          glassBtn.textContent = "🪟 Clear Glass";
-        }
-      } else {
-        err.textContent = "Galat PIN hai. PIN 123 enter karein.";
-      }
-    }
-
-    function toggleGlass(id) {
-      var glass = document.getElementById("glass-" + id);
-      var glassBtn = document.getElementById("glass-btn-" + id);
-      if (!glass) return;
-
-      glass.classList.toggle("clear-mode");
-      if (glassBtn) {
-        glassBtn.textContent = glass.classList.contains("clear-mode")
-          ? "🌫️ Frosted Glass"
-          : "🪟 Clear Glass";
-      }
-    }
-
-    function lockVideo(id) {
-      var input = document.getElementById("pin-input-" + id);
-      var lockBox = document.getElementById("lock-" + id);
-      var playerBox = document.getElementById("player-" + id);
-      var video = playerBox.querySelector("video");
-
-      if (video)
+      <div id="player-v2" class="hidden">
+        <div class="media-frame">
+          <div id="glass-v2" class="frosted-glass-layer" aria-hidden="true"></div>
+          <video controls muted playsinline preload="metadata">
+            <source src="HD2.mp4" type="video/mp4" />
+            Aapka browser video play nahi kar pa raha hai.
+          </video>
+        </div>
+        <div class="video-toolbar">
+          <button id="glass-btn-v2" class="glass-toggle-btn" type="button" onclick="toggleGlass('v2')">
+            🪟 Clear Gla
