@@ -56,21 +56,27 @@
       border-radius: 50%;
       background: conic-gradient(
         from 0deg,
-        rgba(168, 85, 247, 0.34),
-        rgba(236, 72, 153, 0.34),
-        rgba(245, 158, 11, 0.32),
-        rgba(56, 189, 248, 0.28),
-        rgba(16, 185, 129, 0.24),
-        rgba(168, 85, 247, 0.34)
+        rgba(168, 85, 247, 0.36),
+        rgba(236, 72, 153, 0.36),
+        rgba(245, 158, 11, 0.34),
+        rgba(56, 189, 248, 0.3),
+        rgba(16, 185, 129, 0.26),
+        rgba(168, 85, 247, 0.36)
       );
       filter: blur(55px);
-      opacity: 0.72;
+      opacity: 0.75;
       animation: fullScreenSwirl 14s linear infinite;
     }
 
     @keyframes fullScreenSwirl {
       0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
       50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.08); }
+      100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+    }
+
+    @keyframes deepSwirlSpin {
+      0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+      50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.16); }
       100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
     }
 
@@ -181,12 +187,52 @@
     .post-card h3 { font-size: 18px; margin-bottom: 6px; }
     .post-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 14px; }
 
+    /* Deep ghola-ghola lock box */
     .lock-box {
-      border: 1px solid rgba(245, 158, 11, 0.45);
-      background: rgba(9, 11, 20, 0.88);
+      position: relative;
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      background:
+        radial-gradient(circle at 20% 25%, rgba(168, 85, 247, 0.5), transparent 55%),
+        radial-gradient(circle at 80% 75%, rgba(236, 72, 153, 0.45), transparent 58%),
+        #070912;
       border-radius: 14px;
-      padding: 20px 14px;
+      padding: 24px 14px;
       text-align: center;
+      overflow: hidden;
+    }
+
+    .lock-box::before {
+      content: "";
+      position: absolute;
+      width: 290px;
+      height: 290px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        rgba(168, 85, 247, 0.65),
+        rgba(236, 72, 153, 0.65),
+        rgba(245, 158, 11, 0.6),
+        rgba(56, 189, 248, 0.5),
+        rgba(168, 85, 247, 0.65)
+      );
+      filter: blur(28px);
+      animation: deepSwirlSpin 6s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .lock-content {
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      background: rgba(8, 10, 18, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      padding: 18px 12px;
     }
 
     .lock-title { font-size: 15px; font-weight: 700; color: #fde68a; margin-bottom: 6px; }
@@ -248,25 +294,12 @@
       font-weight: 700;
     }
 
-    .lock-again-btn {
-      margin-top: 10px;
-      padding: 7px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.08);
-      color: #e2e8f0;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .pin-error { font-size: 12px; color: #fca5a5; min-height: 18px; }
-
     .media-frame {
+      position: relative;
       width: 100%;
       border-radius: 14px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       background: #050508;
     }
 
@@ -278,6 +311,67 @@
       object-fit: cover;
     }
 
+    /* Deep ghola glass layer over unlocked video */
+    .deep-glass-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.22), transparent 55%),
+        radial-gradient(circle at 75% 75%, rgba(168, 85, 247, 0.24), transparent 60%),
+        rgba(12, 14, 24, 0.22);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      transition: opacity 0.25s ease;
+    }
+
+    .deep-glass-overlay::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        rgba(168, 85, 247, 0.42),
+        rgba(236, 72, 153, 0.42),
+        rgba(245, 158, 11, 0.38),
+        rgba(56, 189, 248, 0.34),
+        rgba(168, 85, 247, 0.42)
+      );
+      filter: blur(26px);
+      animation: deepSwirlSpin 7s linear infinite;
+    }
+
+    .deep-glass-overlay.clear-mode {
+      opacity: 0;
+    }
+
+    .video-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .glass-toggle-btn,
+    .lock-again-btn {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .pin-error { font-size: 12px; color: #fca5a5; min-height: 18px; }
     .hidden { display: none !important; }
 
     .post-action {
@@ -335,39 +429,47 @@
       <p>PIN <strong>123</strong> daal kar video unlock karein ya Buy Now par tap karein.</p>
 
       <div id="lock-v1" class="lock-box">
-        <div class="lock-title">🔒 Demo Preview Locked</div>
-        <div class="lock-sub">Enter PIN 123 to open HD2.mp4</div>
-        <div class="pin-show-badge">PIN: 123</div>
-        <div class="pin-row">
-          <input
-            id="pin-input-v1"
-            class="pin-input"
-            type="text"
-            inputmode="numeric"
-            maxlength="6"
-            placeholder="123"
-            oninput="checkPin('v1')"
-          />
-          <button class="pin-btn" type="button" onclick="checkPin('v1', true)">Unlock</button>
-          <a
-            class="buy-now-btn"
-            href="https://t.me/ViralcontentVIP3_bot?start=buy_hd2"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Buy Now
-          </a>
+        <div class="lock-content">
+          <div class="lock-title">🔒 Demo Preview Locked</div>
+          <div class="lock-sub">Enter PIN 123 to open HD2.mp4</div>
+          <div class="pin-show-badge">PIN: 123</div>
+          <div class="pin-row">
+            <input
+              id="pin-input-v1"
+              class="pin-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="6"
+              placeholder="123"
+              oninput="checkPin('v1')"
+            />
+            <button class="pin-btn" type="button" onclick="checkPin('v1', true)">Unlock</button>
+            <a
+              class="buy-now-btn"
+              href="https://t.me/ViralcontentVIP3_bot?start=buy_hd2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Buy Now
+            </a>
+          </div>
+          <div id="pin-err-v1" class="pin-error"></div>
         </div>
-        <div id="pin-err-v1" class="pin-error"></div>
       </div>
 
       <div id="player-v1" class="hidden">
         <div class="media-frame">
+          <div id="glass-v1" class="deep-glass-overlay" aria-hidden="true"></div>
           <video id="vid-v1" controls playsinline preload="metadata" src="HD2.mp4">
             Aapka browser video play nahi kar pa raha hai.
           </video>
         </div>
-        <button class="lock-again-btn" type="button" onclick="lockVideo('v1')">🔒 Lock Again</button>
+        <div class="video-toolbar">
+          <button id="glass-btn-v1" class="glass-toggle-btn" type="button" onclick="toggleGlass('v1')">
+            🪟 Clear Glass
+          </button>
+          <button class="lock-again-btn" type="button" onclick="lockVideo('v1')">🔒 Lock Again</button>
+        </div>
       </div>
 
       <a class="post-action" href="https://t.me/ViralcontentVIP3_bot?start=gh_hd2" target="_blank" rel="noopener noreferrer">
@@ -386,6 +488,8 @@
       var err = document.getElementById("pin-err-" + id);
       var lockBox = document.getElementById("lock-" + id);
       var playerBox = document.getElementById("player-" + id);
+      var glass = document.getElementById("glass-" + id);
+      var glassBtn = document.getElementById("glass-btn-" + id);
       var video = document.getElementById("vid-" + id);
 
       if (!input || !lockBox || !playerBox) return;
@@ -395,12 +499,27 @@
         if (err) err.textContent = "";
         lockBox.classList.add("hidden");
         playerBox.classList.remove("hidden");
+        if (glass) glass.classList.remove("clear-mode");
+        if (glassBtn) glassBtn.textContent = "🪟 Clear Glass";
         if (video) {
           video.load();
           video.play().catch(function () {});
         }
       } else if (showError && err) {
         err.textContent = "Galat PIN! 123 likhein.";
+      }
+    }
+
+    function toggleGlass(id) {
+      var glass = document.getElementById("glass-" + id);
+      var glassBtn = document.getElementById("glass-btn-" + id);
+      if (!glass) return;
+
+      glass.classList.toggle("clear-mode");
+      if (glassBtn) {
+        glassBtn.textContent = glass.classList.contains("clear-mode")
+          ? "🌫️ Deep Glass"
+          : "🪟 Clear Glass";
       }
     }
 
