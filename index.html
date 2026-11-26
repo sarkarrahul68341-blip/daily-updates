@@ -6,11 +6,29 @@
   <title>Viral Content Hub — Telegram Bot &amp; Previews</title>
   <meta
     name="description"
-    content="Watch trending short clips, browse 4K wallpapers, and launch @ViralcontentVIP3_bot on Telegram."
+    content="Watch trending short clips, browse 4K wallpapers, and jump straight into @ViralcontentVIP3_bot on Telegram for full collections."
   />
 
   <!-- Verification tag for pujaridty@gmail.com -->
   <meta name="google-site-verification" content="t5obEuxFK29Uq4aOwpXE-OkndDZ8p9qI6kNItoKeASo" />
+
+  <!-- Google Analytics 4 (Apni asli G-XXXXXXXXXX ID se replace karein) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-XXXXXXXXXX");
+
+    function trackBotClick(label) {
+      if (typeof gtag === "function") {
+        gtag("event", "telegram_bot_click", {
+          event_category: "engagement",
+          event_label: label
+        });
+      }
+    }
+  </script>
 
   <style>
     :root {
@@ -318,9 +336,10 @@
       <div class="hero-actions">
         <a
           class="btn-telegram"
-          href="https://t.me/ViralcontentVIP3_bot"
+          href="https://t.me/ViralcontentVIP3_bot?start=gh_hub"
           target="_blank"
           rel="noopener noreferrer"
+          onclick="trackBotClick('hero_button')"
         >
           🚀 Open Telegram Bot
         </a>
@@ -366,9 +385,10 @@
       </div>
       <a
         class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot"
+        href="https://t.me/ViralcontentVIP3_bot?start=gh_clip1"
         target="_blank"
         rel="noopener noreferrer"
+        onclick="trackBotClick('clip1')"
       >
         Open @ViralcontentVIP3_bot →
       </a>
@@ -391,9 +411,10 @@
       </div>
       <a
         class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot"
+        href="https://t.me/ViralcontentVIP3_bot?start=gh_clip2"
         target="_blank"
         rel="noopener noreferrer"
+        onclick="trackBotClick('clip2')"
       >
         Open @ViralcontentVIP3_bot →
       </a>
@@ -416,9 +437,10 @@
       </div>
       <a
         class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot"
+        href="https://t.me/ViralcontentVIP3_bot?start=gh_clip3"
         target="_blank"
         rel="noopener noreferrer"
+        onclick="trackBotClick('clip3')"
       >
         Open @ViralcontentVIP3_bot →
       </a>
@@ -438,9 +460,10 @@
       </div>
       <a
         class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot"
+        href="https://t.me/ViralcontentVIP3_bot?start=gh_wall1"
         target="_blank"
         rel="noopener noreferrer"
+        onclick="trackBotClick('wall1')"
       >
         Get More in Bot →
       </a>
@@ -460,9 +483,10 @@
       </div>
       <a
         class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot"
+        href="https://t.me/ViralcontentVIP3_bot?start=gh_wall2"
         target="_blank"
         rel="noopener noreferrer"
+        onclick="trackBotClick('wall2')"
       >
         Get More in Bot →
       </a>
@@ -496,5 +520,4 @@
     }
   </script>
 </body>
-  </html>
-  
+</html>
