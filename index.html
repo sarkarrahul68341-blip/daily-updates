@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Viral Content Hub — Telegram Bot &amp; Previews</title>
+  <title>Viral Content Hub — Offers, Clip Demos &amp; Packs</title>
   <meta
     name="description"
-    content="Watch trending short clips, browse 4K wallpapers, and jump straight into @ViralcontentVIP3_bot on Telegram for full collections."
+    content="Check active discounts, watch short clip demos, and open @ViralcontentVIP3_bot on Telegram for packs."
   />
 
   <!-- Verification tag for pujaridty@gmail.com -->
@@ -33,15 +33,19 @@
   <style>
     :root {
       --bg-main: #07070c;
-      --bg-card: rgba(20, 22, 34, 0.85);
-      --border-glow: rgba(168, 85, 247, 0.32);
+      --bg-card: rgba(20, 22, 34, 0.88);
+      --border-glow: rgba(168, 85, 247, 0.35);
       --border-subtle: rgba(255, 255, 255, 0.09);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --grad-primary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%);
       --grad-btn: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      --grad-buy: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+      --grad-offer: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(236, 72, 153, 0.18));
       --accent-cyan: #38bdf8;
       --accent-pink: #f472b6;
+      --accent-gold: #fbbf24;
+      --accent-green: #34d399;
     }
 
     * {
@@ -77,7 +81,7 @@
       border: 1px solid var(--border-subtle);
       padding: 11px 16px;
       border-radius: 999px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .brand {
@@ -100,13 +104,37 @@
       border: 1px solid rgba(16, 185, 129, 0.32);
     }
 
+    .offer-banner {
+      background: var(--grad-offer);
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      border-radius: 16px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .offer-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fef3c7;
+    }
+
+    .offer-sub {
+      font-size: 12px;
+      color: #e2e8f0;
+    }
+
     .hero {
       position: relative;
       background: var(--bg-card);
       backdrop-filter: blur(14px);
       border: 1px solid var(--border-glow);
       border-radius: 22px;
-      padding: 28px 22px;
+      padding: 26px 22px;
       margin-bottom: 22px;
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
       overflow: hidden;
@@ -131,11 +159,11 @@
       border: 1px solid rgba(139, 92, 246, 0.42);
       padding: 4px 12px;
       border-radius: 999px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     h1 {
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 800;
       line-height: 1.18;
       margin-bottom: 10px;
@@ -145,14 +173,7 @@
     .hero p {
       color: var(--text-muted);
       font-size: 15px;
-      margin-bottom: 20px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
+      margin-bottom: 18px;
     }
 
     .btn-telegram {
@@ -160,7 +181,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 13px 22px;
+      padding: 12px 20px;
       border-radius: 12px;
       font-size: 14px;
       font-weight: 700;
@@ -170,83 +191,14 @@
       box-shadow: 0 8px 22px rgba(16, 185, 129, 0.35);
     }
 
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      color: #e2e8f0;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .stats-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .stat-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 12px;
-      text-align: center;
-    }
-
-    .stat-num {
-      font-size: 18px;
-      font-weight: 800;
-      color: #ffffff;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .filter-btn {
-      padding: 8px 15px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(20, 22, 34, 0.8);
-      color: var(--text-muted);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.18s ease;
-    }
-
-    .filter-btn.active {
-      background: rgba(139, 92, 246, 0.25);
-      border-color: rgba(168, 85, 247, 0.75);
-      color: #ffffff;
-    }
-
     .post-card {
       background: var(--bg-card);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border-subtle);
       border-radius: 18px;
       padding: 18px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.42);
-    }
-
-    .post-card.hidden {
-      display: none;
     }
 
     .post-meta {
@@ -265,11 +217,13 @@
       color: var(--accent-pink);
     }
 
-    .mini-chip {
+    .offer-chip {
       font-size: 11px;
-      color: var(--accent-cyan);
-      background: rgba(56, 189, 248, 0.12);
-      padding: 2px 9px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      background: rgba(251, 191, 36, 0.14);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      padding: 2px 10px;
       border-radius: 999px;
     }
 
@@ -296,7 +250,7 @@
     .media-frame video {
       width: 100%;
       display: block;
-      max-height: 450px;
+      max-height: 420px;
       object-fit: cover;
     }
 
@@ -316,6 +270,185 @@
       text-decoration: none;
     }
 
+    .price-box {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .price-top-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+
+    .price-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .discount-badge {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent-green);
+      background: rgba(16, 185, 129, 0.16);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 1px 8px;
+      border-radius: 999px;
+    }
+
+    .price-value {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .price-strike {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      margin-left: 6px;
+      font-weight: 500;
+    }
+
+    .btn-buy-now {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 20px;
+      border-radius: 12px;
+      border: none;
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffffff;
+      background: var(--grad-buy);
+      box-shadow: 0 8px 20px rgba(239, 68, 68, 0.35);
+      cursor: pointer;
+    }
+
+    .btn-buy-now:active {
+      transform: scale(0.98);
+    }
+
+    /* 4-MINUTE TIMEOUT MODAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 12, 0.82);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 999;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 420px;
+      background: #121422;
+      border: 1px solid rgba(251, 191, 36, 0.45);
+      border-radius: 20px;
+      padding: 22px 20px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+    }
+
+    .modal-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #fde68a;
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .modal-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .timer-box {
+      background: rgba(239, 68, 68, 0.14);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+
+    .timer-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #fca5a5;
+      margin-bottom: 2px;
+    }
+
+    .timer-display {
+      font-size: 32px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      color: #ffffff;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-modal-bot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      background: var(--grad-btn);
+      color: #ffffff;
+    }
+
+    .btn-modal-bot.expired {
+      background: #334155;
+      color: #94a3b8;
+      pointer-events: none;
+    }
+
+    .btn-modal-close {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
     .footer {
       text-align: center;
       margin-top: 32px;
@@ -333,199 +466,157 @@
       <span class="status-pill">● Bot Active</span>
     </div>
 
-    <header class="hero">
-      <span class="tag">✨ @ViralcontentVIP3_bot Hub</span>
-      <h1>Viral Content Hub</h1>
-      <p>
-        Watch trending short clips, explore 4K wallpapers, and jump straight into
-        @ViralcontentVIP3_bot on Telegram for full collections.
-      </p>
-      <div class="hero-actions">
-        <a
-          class="btn-telegram"
-          href="https://t.me/ViralcontentVIP3_bot?start=gh_hub"
-          target="_blank"
-          rel="noopener noreferrer"
-          onclick="trackBotClick('hero_button')"
-        >
-          🚀 Open Telegram Bot
-        </a>
-        <a class="btn-secondary" href="#feed">Browse Previews ↓</a>
+    <!-- SPECIAL OFFER BANNER -->
+    <div class="offer-banner">
+      <div>
+        <div class="offer-text">🔥 Special Offer: Starter Pack ₹39 Mein + Heavy Discount!</div>
+        <div class="offer-sub">Upar photo preview dekhein, clip demo check karein, aur Buy Now par click karein.</div>
       </div>
-    </header>
-
-    <section class="stats-strip" aria-label="Hub highlights">
-      <div class="stat-box">
-        <div class="stat-num">3 Clips</div>
-        <div class="stat-label">Video Previews</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">3 Photos</div>
-        <div class="stat-label">HD Wallpapers</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">Telegram Bot</div>
-      </div>
-    </section>
-
-    <div id="feed" class="filter-bar" role="tablist" aria-label="Content options">
-      <button class="filter-btn active" role="tab" aria-selected="true" type="button" onclick="filterCards('all', this)">All Options</button>
-      <button class="filter-btn" role="tab" aria-selected="false" type="button" onclick="filterCards('videos', this)">3 Videos</button>
-      <button class="filter-btn" role="tab" aria-selected="false" type="button" onclick="filterCards('photos', this)">3 Photos</button>
+      <span class="offer-chip">Up to 61% OFF</span>
     </div>
 
-    <!-- VIDEO 1 -->
-    <article class="post-card" data-category="videos">
-      <div class="post-meta">
-        <span class="post-badge">Video Clip 01</span>
-        <span class="mini-chip">Short Clip</span>
-      </div>
-      <h3>Trending Sample Clip 1</h3>
+    <header class="hero">
+      <span class="tag">✨ @ViralcontentVIP3_bot Hub</span>
+      <h1>Clip Demos &amp; Discount Packs</h1>
       <p>
-        Short sample clip preview. Tap play to watch or open @ViralcontentVIP3_bot for full updates.
+        Upar featured photo dekhein, clip demo preview check karein, aur neeche Buy Now par click karke
+        4 minute ke andar @ViralcontentVIP3_bot par pack claim karein.
+      </p>
+      <a
+        class="btn-telegram"
+        href="https://t.me/ViralcontentVIP3_bot?start=gh_offer"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="trackBotClick('hero_offer')"
+      >
+        🚀 Open Telegram Bot
+      </a>
+    </header>
+
+    <!-- SINGLE PHOTO OPTION AT TOP -->
+    <article class="post-card">
+      <div class="post-meta">
+        <span class="post-badge">Featured Photo</span>
+        <span class="offer-chip">HD Preview</span>
+      </div>
+      <h3>Featured HD Preview</h3>
+      <p>
+        Single top photo preview. Full collection ke liye @ViralcontentVIP3_bot open karein.
       </p>
       <div class="media-frame">
-        <video controls muted playsinline preload="metadata" onerror="handleMediaError(this, 'Video preview filhal load nahi ho paya.')">
+        <img src="HD1.png" alt="Featured HD Preview" onerror="handleMediaError(this, 'Photo preview filhal load nahi ho paya (HD1.png check karein).')" />
+      </div>
+      <a
+        class="post-action"
+        href="https://t.me/ViralcontentVIP3_bot?start=gh_top_photo"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="trackBotClick('top_photo')"
+      >
+        Open @ViralcontentVIP3_bot →
+      </a>
+    </article>
+
+    <!-- BOX 1 (₹39 · 61% OFF) -->
+    <article class="post-card">
+      <div class="post-meta">
+        <span class="post-badge">Box 01 · Starter Demo</span>
+        <span class="offer-chip">61% Discount</span>
+      </div>
+      <h3>Starter Clip Demo 1</h3>
+      <p>
+        Short clip demo preview. Starter access ke liye neeche discount aur Buy Now dekhein.
+      </p>
+      <div class="media-frame">
+        <video controls muted playsinline preload="metadata" onerror="handleMediaError(this, 'Demo clip filhal load nahi ho paya (clip1.mp4 check karein).')">
           <source src="clip1.mp4" type="video/mp4" />
           Aapka browser video play nahi kar pa raha hai.
         </video>
       </div>
-      <a
-        class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot?start=gh_clip1"
-        target="_blank"
-        rel="noopener noreferrer"
-        onclick="trackBotClick('clip1')"
-      >
-        Open @ViralcontentVIP3_bot →
-      </a>
+      <div class="price-box">
+        <div>
+          <div class="price-top-row">
+            <span class="price-label">Offer Price</span>
+            <span class="discount-badge">61% OFF</span>
+          </div>
+          <div class="price-value">₹39 <span class="price-strike">₹99</span></div>
+        </div>
+        <button
+          type="button"
+          class="btn-buy-now"
+          onclick="openBuyModal('Starter Pack (₹39)', '₹39', 'https://t.me/ViralcontentVIP3_bot?start=gh_pack39', 'buy_now_39')"
+        >
+          Buy Now
+        </button>
+      </div>
     </article>
 
-    <!-- VIDEO 2 -->
-    <article class="post-card" data-category="videos">
+    <!-- BOX 2 (₹99 · 50% OFF) -->
+    <article class="post-card">
       <div class="post-meta">
-        <span class="post-badge">Video Clip 02</span>
-        <span class="mini-chip">Short Clip</span>
+        <span class="post-badge">Box 02 · Clip Demo</span>
+        <span class="offer-chip">50% Discount</span>
       </div>
-      <h3>Trending Sample Clip 2</h3>
+      <h3>Trending Clip Demo 2</h3>
       <p>
-        Second short preview clip. More clips and packs are available inside the Telegram bot.
+        Second short demo clip. Zyada collection aur updates ke liye Buy Now par click karein.
       </p>
       <div class="media-frame">
-        <video controls muted playsinline preload="metadata" onerror="handleMediaError(this, 'Video preview filhal load nahi ho paya.')">
+        <video controls muted playsinline preload="metadata" onerror="handleMediaError(this, 'Demo clip filhal load nahi ho paya (clip2.mp4 check karein).')">
           <source src="clip2.mp4" type="video/mp4" />
           Aapka browser video play nahi kar pa raha hai.
         </video>
       </div>
-      <a
-        class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot?start=gh_clip2"
-        target="_blank"
-        rel="noopener noreferrer"
-        onclick="trackBotClick('clip2')"
-      >
-        Open @ViralcontentVIP3_bot →
-      </a>
+      <div class="price-box">
+        <div>
+          <div class="price-top-row">
+            <span class="price-label">Offer Price</span>
+            <span class="discount-badge">50% OFF</span>
+          </div>
+          <div class="price-value">₹99 <span class="price-strike">₹199</span></div>
+        </div>
+        <button
+          type="button"
+          class="btn-buy-now"
+          onclick="openBuyModal('Trending Pack (₹99)', '₹99', 'https://t.me/ViralcontentVIP3_bot?start=gh_pack99', 'buy_now_99')"
+        >
+          Buy Now
+        </button>
+      </div>
     </article>
 
-    <!-- VIDEO 3 -->
-    <article class="post-card" data-category="videos">
+    <!-- BOX 3 (₹199 · 43% OFF) -->
+    <article class="post-card">
       <div class="post-meta">
-        <span class="post-badge">Video Clip 03</span>
-        <span class="mini-chip">Short Clip</span>
+        <span class="post-badge">Box 03 · Clip Demo</span>
+        <span class="offer-chip">43% Discount</span>
       </div>
-      <h3>Trending Sample Clip 3</h3>
+      <h3>VIP Combo Clip Demo 3</h3>
       <p>
-        Third short sample preview. Tap below to launch @ViralcontentVIP3_bot on Telegram.
+        Third short demo clip. Complete bundle ke liye neeche Buy Now par click karein.
       </p>
       <div class="media-frame">
-        <video controls muted playsinline preload="metadata" onerror="handleMediaError(this, 'Video preview filhal load nahi ho paya.')">
+        <video controls muted playsinline preload="metadata" onerror="handleMediaError(this, 'Demo clip filhal load nahi ho paya (clip3.mp4 check karein).')">
           <source src="clip3.mp4" type="video/mp4" />
           Aapka browser video play nahi kar pa raha hai.
         </video>
       </div>
-      <a
-        class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot?start=gh_clip3"
-        target="_blank"
-        rel="noopener noreferrer"
-        onclick="trackBotClick('clip3')"
-      >
-        Open @ViralcontentVIP3_bot →
-      </a>
-    </article>
-
-    <!-- PHOTO BOX 1 (HD1.png) -->
-    <article class="post-card" data-category="photos">
-      <div class="post-meta">
-        <span class="post-badge">Photo 01</span>
-        <span class="mini-chip">HD Wallpaper</span>
+      <div class="price-box">
+        <div>
+          <div class="price-top-row">
+            <span class="price-label">Offer Price</span>
+            <span class="discount-badge">43% OFF</span>
+          </div>
+          <div class="price-value">₹199 <span class="price-strike">₹349</span></div>
+        </div>
+        <button
+          type="button"
+          class="btn-buy-now"
+          onclick="openBuyModal('VIP Combo Pack (₹199)', '₹199', 'https://t.me/ViralcontentVIP3_bot?start=gh_pack199', 'buy_now_199')"
+        >
+          Buy Now
+        </button>
       </div>
-      <h3>HD Wallpaper Preview 1</h3>
-      <p>
-        Clean wallpaper preview for mobile and desktop screens. More items inside the bot.
-      </p>
-      <div class="media-frame">
-        <img src="HD1.png" alt="HD Wallpaper Preview 1" onerror="handleMediaError(this, 'Wallpaper preview filhal load nahi ho paya.')" />
-      </div>
-      <a
-        class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot?start=gh_hd1"
-        target="_blank"
-        rel="noopener noreferrer"
-        onclick="trackBotClick('hd1')"
-      >
-        Get More in Bot →
-      </a>
-    </article>
-
-    <!-- PHOTO BOX 2 (HD2.png) -->
-    <article class="post-card" data-category="photos">
-      <div class="post-meta">
-        <span class="post-badge">Photo 02</span>
-        <span class="mini-chip">HD Wallpaper</span>
-      </div>
-      <h3>HD Wallpaper Preview 2</h3>
-      <p>
-        Second wallpaper preview. Open @ViralcontentVIP3_bot on Telegram for full collections.
-      </p>
-      <div class="media-frame">
-        <img src="HD2.png" alt="HD Wallpaper Preview 2" onerror="handleMediaError(this, 'Wallpaper preview filhal load nahi ho paya.')" />
-      </div>
-      <a
-        class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot?start=gh_hd2"
-        target="_blank"
-        rel="noopener noreferrer"
-        onclick="trackBotClick('hd2')"
-      >
-        Get More in Bot →
-      </a>
-    </article>
-
-    <!-- PHOTO BOX 3 (HD3.png) -->
-    <article class="post-card" data-category="photos">
-      <div class="post-meta">
-        <span class="post-badge">Photo 03</span>
-        <span class="mini-chip">HD Wallpaper</span>
-      </div>
-      <h3>HD Wallpaper Preview 3</h3>
-      <p>
-        Third wallpaper preview. Tap below to unlock the full HD collection inside the bot.
-      </p>
-      <div class="media-frame">
-        <img src="HD3.png" alt="HD Wallpaper Preview 3" onerror="handleMediaError(this, 'Wallpaper preview filhal load nahi ho paya.')" />
-      </div>
-      <a
-        class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot?start=gh_hd3"
-        target="_blank"
-        rel="noopener noreferrer"
-        onclick="trackBotClick('hd3')"
-      >
-        Get More in Bot →
-      </a>
     </article>
 
     <footer class="footer">
@@ -533,50 +624,82 @@
     </footer>
   </div>
 
+  <!-- 4-MINUTE TIMEOUT MODAL -->
+  <div id="buyModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalPackTitle">
+    <div class="modal-card">
+      <span class="modal-badge">⏳ 4-Minute Offer Timer</span>
+      <h2 id="modalPackTitle" class="modal-title">Starter Pack (₹39)</h2>
+      <p id="modalPackDesc" class="modal-desc">
+        Aapka discount lock ho gaya hai. 4 minute khatam hone se pehle neeche button dabakar Telegram bot par proceed karein.
+      </p>
+
+      <div class="timer-box">
+        <div id="timerLabel" class="timer-label">Time Remaining</div>
+        <div id="timerDisplay" class="timer-display">04:00</div>
+      </div>
+
+      <div class="modal-actions">
+        <a
+          id="modalBotLink"
+          class="btn-modal-bot"
+          href="https://t.me/ViralcontentVIP3_bot?start=gh_pack39"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Proceed in @ViralcontentVIP3_bot →
+        </a>
+        <button type="button" class="btn-modal-close" onclick="closeBuyModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    function filterCards(category, clickedBtn) {
-      var cards = document.querySelectorAll(".post-card");
-      var buttons = document.querySelectorAll(".filter-btn");
+    var countdownInterval = null;
 
-      buttons.forEach(function (btn) {
-        btn.classList.remove("active");
-        btn.setAttribute("aria-selected", "false");
-      });
-      if (clickedBtn) {
-        clickedBtn.classList.add("active");
-        clickedBtn.setAttribute("aria-selected", "true");
+    function openBuyModal(packTitle, priceText, botUrl, trackLabel) {
+      trackBotClick(trackLabel);
+
+      var modal = document.getElementById("buyModal");
+      var titleEl = document.getElementById("modalPackTitle");
+      var descEl = document.getElementById("modalPackDesc");
+      var timerLabelEl = document.getElementById("timerLabel");
+      var timerDisplayEl = document.getElementById("timerDisplay");
+      var botLinkEl = document.getElementById("modalBotLink");
+
+      titleEl.textContent = packTitle;
+      descEl.textContent =
+        "Aapka " + priceText + " discount offer lock ho gaya hai. 4 minute khatam hone se pehle Telegram bot open karein.";
+      botLinkEl.href = botUrl;
+      botLinkEl.textContent = "Proceed (" + priceText + ") in @ViralcontentVIP3_bot →";
+      botLinkEl.classList.remove("expired");
+      timerLabelEl.textContent = "Time Remaining";
+
+      if (countdownInterval) {
+        clearInterval(countdownInterval);
       }
 
-      cards.forEach(function (card) {
-        var cardCategory = card.getAttribute("data-category");
-        if (category === "all" || cardCategory === category) {
-          card.classList.remove("hidden");
+      var remainingSeconds = 4 * 60; // 4 minutes = 240 seconds
+      updateTimerText(timerDisplayEl, remainingSeconds);
+      modal.classList.add("open");
+
+      countdownInterval = setInterval(function () {
+        remainingSeconds--;
+        if (remainingSeconds <= 0) {
+          clearInterval(countdownInterval);
+          countdownInterval = null;
+          timerDisplayEl.textContent = "00:00";
+          timerLabelEl.textContent = "Session Timeout (4 Min Over)";
+          descEl.textContent = "4 minute ka time out ho gaya hai. Dobara offer lene ke liye close karke phir se Buy Now dabayein.";
+          botLinkEl.textContent = "Time Out — Dubara Buy Now Karein";
+          botLinkEl.classList.add("expired");
         } else {
-          card.classList.add("hidden");
+          updateTimerText(timerDisplayEl, remainingSeconds);
         }
-      });
+      }, 1000);
     }
 
-    function handleMediaError(el, message) {
-      var frame = el.closest(".media-frame");
-      if (frame && !frame.querySelector(".media-fallback")) {
-        var notice = document.createElement("div");
-        notice.className = "media-fallback";
-        notice.textContent = message;
-        frame.innerHTML = "";
-        frame.appendChild(notice);
-      }
-    }
-
-    document.addEventListener("play", function (e) {
-      if (e.target && e.target.tagName === "VIDEO") {
-        document.querySelectorAll("video").forEach(function (vid) {
-          if (vid !== e.target) {
-            vid.pause();
-          }
-        });
-      }
-    }, true);
-  </script>
-</body>
-</html>
+    function updateTimerText(el, totalSeconds) {
+      var mins = Math.floor(totalSeconds / 60);
+      var secs = totalSeconds % 60;
+      var minStr = mins < 10 ? "0" + mins : String(mins);
+      var secStr = secs < 10 ? "
