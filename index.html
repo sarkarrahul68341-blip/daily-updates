@@ -45,7 +45,7 @@
       overflow-x: hidden;
     }
 
-    /* Full-screen animated ghola-ghola swirl & blur layer so screen never looks blank */
+    /* Full-screen swirl + floating light particles */
     .screen-swirl-bg {
       position: fixed;
       inset: 0;
@@ -80,6 +80,59 @@
       animation: fullScreenSwirl 14s linear infinite;
     }
 
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(18px);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 120px;
+      height: 120px;
+      top: 14%;
+      left: 8%;
+      background: rgba(168, 85, 247, 0.45);
+      animation: floatOrbA 8s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      width: 150px;
+      height: 150px;
+      top: 52%;
+      right: 6%;
+      background: rgba(236, 72, 153, 0.38);
+      animation: floatOrbB 10s ease-in-out infinite;
+    }
+
+    .orb-3 {
+      width: 95px;
+      height: 95px;
+      bottom: 14%;
+      left: 16%;
+      background: rgba(56, 189, 248, 0.4);
+      animation: floatOrbA 9s ease-in-out infinite reverse;
+    }
+
+    @keyframes floatOrbA {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(18px, -22px) scale(1.12);
+      }
+    }
+
+    @keyframes floatOrbB {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(-20px, 18px) scale(1.1);
+      }
+    }
+
     @keyframes fullScreenSwirl {
       0% {
         transform: translate(-50%, -50%) rotate(0deg) scale(1);
@@ -89,6 +142,28 @@
       }
       100% {
         transform: translate(-50%, -50%) rotate(360deg) scale(1);
+      }
+    }
+
+    @keyframes cardEnter {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulseDot {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.55;
+        transform: scale(0.92);
       }
     }
 
@@ -109,6 +184,7 @@
       padding: 11px 16px;
       border-radius: 999px;
       margin-bottom: 22px;
+      animation: cardEnter 0.45s ease both;
     }
 
     .brand {
@@ -122,6 +198,9 @@
     }
 
     .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: 12px;
       font-weight: 600;
       color: #6ee7b7;
@@ -129,6 +208,14 @@
       padding: 4px 11px;
       border-radius: 999px;
       border: 1px solid rgba(16, 185, 129, 0.32);
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+      animation: pulseDot 1.8s ease-in-out infinite;
     }
 
     .hero {
@@ -141,6 +228,7 @@
       margin-bottom: 22px;
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
       overflow: hidden;
+      animation: cardEnter 0.55s ease both;
     }
 
     .hero::before {
@@ -199,6 +287,16 @@
       background: var(--grad-btn);
       color: #ffffff;
       box-shadow: 0 8px 22px rgba(16, 185, 129, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-telegram:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(16, 185, 129, 0.45);
+    }
+
+    .btn-telegram:active {
+      transform: scale(0.97);
     }
 
     .btn-secondary {
@@ -213,6 +311,12 @@
       color: #e2e8f0;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--border-subtle);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.11);
     }
 
     .filter-bar {
@@ -220,6 +324,7 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 20px;
+      animation: cardEnter 0.65s ease both;
     }
 
     .filter-btn {
@@ -232,6 +337,12 @@
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      transform: translateY(-1px);
+      color: #ffffff;
     }
 
     .filter-btn.active {
@@ -248,6 +359,13 @@
       padding: 18px;
       margin-bottom: 20px;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.42);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+      animation: cardEnter 0.7s ease both;
+    }
+
+    .post-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(168, 85, 247, 0.36);
     }
 
     .post-card.hidden {
@@ -326,24 +444,12 @@
       z-index: 0;
     }
 
-    @keyframes swirlSpin {
-      0% {
-        transform: translate(-50%, -50%) rotate(0deg) scale(1);
-      }
-      50% {
-        transform: translate(-50%, -50%) rotate(180deg) scale(1.12);
-      }
-      100% {
-        transform: translate(-50%, -50%) rotate(360deg) scale(1);
-      }
-    }
-
     .lock-content {
       position: relative;
       z-index: 1;
-      backdrop-filter: blur(8px);
-      background: rgba(9, 11, 20, 0.58);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      background: rgba(9, 11, 20, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 12px;
       padding: 16px 12px;
     }
@@ -403,6 +509,11 @@
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
+      transition: transform 0.18s ease;
+    }
+
+    .pin-btn:active {
+      transform: scale(0.96);
     }
 
     .buy-now-btn {
@@ -416,14 +527,61 @@
       color: #ffffff;
       font-size: 13px;
       font-weight: 700;
+      transition: transform 0.18s ease;
     }
 
-    .lock-again-btn {
+    .buy-now-btn:active {
+      transform: scale(0.96);
+    }
+
+    .media-frame {
+      position: relative;
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: #050508;
+    }
+
+    .media-frame img,
+    .media-frame video {
+      width: 100%;
+      display: block;
+      max-height: 450px;
+      object-fit: cover;
+    }
+
+    .frosted-glass-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.16), transparent 55%),
+        radial-gradient(circle at 75% 75%, rgba(168, 85, 247, 0.14), transparent 60%),
+        rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(8px) saturate(130%);
+      -webkit-backdrop-filter: blur(8px) saturate(130%);
+      transition: opacity 0.25s ease;
+    }
+
+    .frosted-glass-layer.clear-mode {
+      opacity: 0;
+    }
+
+    .video-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-top: 10px;
+    }
+
+    .glass-toggle-btn,
+    .lock-again-btn {
       padding: 7px 14px;
       border-radius: 999px;
       border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.08);
       color: #e2e8f0;
       font-size: 12px;
       font-weight: 600;
@@ -434,22 +592,6 @@
       font-size: 12px;
       color: #fca5a5;
       min-height: 18px;
-    }
-
-    .media-frame {
-      width: 100%;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: #050508;
-    }
-
-    .media-frame img,
-    .media-frame video {
-      width: 100%;
-      display: block;
-      max-height: 450px;
-      object-fit: cover;
     }
 
     .hidden {
@@ -478,12 +620,15 @@
 <body>
   <div class="screen-swirl-bg" aria-hidden="true">
     <div class="screen-swirl-ring"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
 
   <div class="container">
     <div class="topbar">
       <span class="brand">Viral Content Hub</span>
-      <span class="status-pill">● Bot Active</span>
+      <span class="status-pill"><span class="live-dot"></span> Bot Active</span>
     </div>
 
     <header class="hero">
@@ -551,12 +696,18 @@
 
       <div id="player-v1" class="hidden">
         <div class="media-frame">
+          <div id="glass-v1" class="frosted-glass-layer" aria-hidden="true"></div>
           <video controls muted playsinline preload="metadata">
             <source src="clip1.mp4" type="video/mp4" />
             Aapka browser video play nahi kar pa raha hai.
           </video>
         </div>
-        <button class="lock-again-btn" type="button" onclick="lockVideo('v1')">🔒 Lock Again</button>
+        <div class="video-toolbar">
+          <button id="glass-btn-v1" class="glass-toggle-btn" type="button" onclick="toggleGlass('v1')">
+            🪟 Clear Glass
+          </button>
+          <button class="lock-again-btn" type="button" onclick="lockVideo('v1')">🔒 Lock Again</button>
+        </div>
       </div>
 
       <a class="post-action" href="https://t.me/ViralcontentVIP3_bot?start=gh_clip1" target="_blank" rel="noopener noreferrer">
@@ -596,111 +747,10 @@
 
       <div id="player-v2" class="hidden">
         <div class="media-frame">
+          <div id="glass-v2" class="frosted-glass-layer" aria-hidden="true"></div>
           <video controls muted playsinline preload="metadata">
             <source src="clip2.mp4" type="video/mp4" />
             Aapka browser video play nahi kar pa raha hai.
           </video>
         </div>
-        <button class="lock-again-btn" type="button" onclick="lockVideo('v2')">🔒 Lock Again</button>
-      </div>
-
-      <a class="post-action" href="https://t.me/ViralcontentVIP3_bot?start=gh_clip2" target="_blank" rel="noopener noreferrer">
-        Open @ViralcontentVIP3_bot →
-      </a>
-    </article>
-
-    <!-- Locked Video 3 -->
-    <article class="post-card" data-category="videos">
-      <div class="post-meta">
-        <span class="post-badge">Video Clip 03</span>
-        <span class="mini-chip">🔒 PIN Locked</span>
-      </div>
-      <h3>Trending Sample Clip 3</h3>
-      <p>This video is locked. Enter PIN <strong>123</strong> or tap Buy Now.</p>
-
-      <div id="lock-v3" class="lock-box">
-        <div class="lock-content">
-          <div class="lock-title">🔒 Demo Preview Locked</div>
-          <div class="lock-sub">Enter PIN to open Video Clip 03</div>
-          <div class="pin-show-badge">PIN: 123</div>
-          <div class="pin-row">
-            <input id="pin-input-v3" class="pin-input" type="password" inputmode="numeric" maxlength="8" placeholder="123" />
-            <button class="pin-btn" type="button" onclick="unlockVideo('v3')">Unlock</button>
-            <a
-              class="buy-now-btn"
-              href="https://t.me/ViralcontentVIP3_bot?start=buy_clip3"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Buy Now
-            </a>
-          </div>
-          <div id="pin-err-v3" class="pin-error"></div>
-        </div>
-      </div>
-
-      <div id="player-v3" class="hidden">
-        <div class="media-frame">
-          <video controls muted playsinline preload="metadata">
-            <source src="clip3.mp4" type="video/mp4" />
-            Aapka browser video play nahi kar pa raha hai.
-          </video>
-        </div>
-        <button class="lock-again-btn" type="button" onclick="lockVideo('v3')">🔒 Lock Again</button>
-      </div>
-
-      <a class="post-action" href="https://t.me/ViralcontentVIP3_bot?start=gh_clip3" target="_blank" rel="noopener noreferrer">
-        Open @ViralcontentVIP3_bot →
-      </a>
-    </article>
-
-    <footer class="footer">
-      Viral Content Hub · Telegram Bot: @ViralcontentVIP3_bot
-    </footer>
-  </div>
-
-  <script>
-    var VIDEO_PIN = "123";
-
-    function unlockVideo(id) {
-      var input = document.getElementById("pin-input-" + id);
-      var err = document.getElementById("pin-err-" + id);
-      var lockBox = document.getElementById("lock-" + id);
-      var playerBox = document.getElementById("player-" + id);
-
-      if (input.value.trim() === VIDEO_PIN) {
-        err.textContent = "";
-        lockBox.classList.add("hidden");
-        playerBox.classList.remove("hidden");
-      } else {
-        err.textContent = "Galat PIN hai. PIN 123 enter karein.";
-      }
-    }
-
-    function lockVideo(id) {
-      var input = document.getElementById("pin-input-" + id);
-      var lockBox = document.getElementById("lock-" + id);
-      var playerBox = document.getElementById("player-" + id);
-      var video = playerBox.querySelector("video");
-
-      if (video) {
-        video.pause();
-      }
-      input.value = "";
-      playerBox.classList.add("hidden");
-      lockBox.classList.remove("hidden");
-    }
-
-    function filterCards(category, clickedBtn) {
-      var cards = document.querySelectorAll(".post-card");
-      var buttons = document.querySelectorAll(".filter-btn");
-
-      buttons.forEach(function (btn) {
-        btn.classList.remove("active");
-      });
-      if (clickedBtn) {
-        clickedBtn.classList.add("active");
-      }
-
-      cards.forEach(function (card) {
-        var cardCategory = card.getAttribute("data-cat
+        <div 
