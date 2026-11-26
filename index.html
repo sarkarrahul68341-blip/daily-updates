@@ -6,7 +6,7 @@
   <title>Viral Content Hub — Telegram Bot &amp; Previews</title>
   <meta
     name="description"
-    content="Explore trending short clips, 4K wallpapers, and creator packs via @ViralcontentVIP3_bot on Telegram."
+    content="Watch trending short clips, browse 4K wallpapers, and launch @ViralcontentVIP3_bot on Telegram."
   />
 
   <!-- Verification tag for pujaridty@gmail.com -->
@@ -15,13 +15,15 @@
   <style>
     :root {
       --bg-main: #07070c;
-      --bg-card: rgba(20, 22, 34, 0.8);
-      --border-glow: rgba(168, 85, 247, 0.28);
+      --bg-card: rgba(20, 22, 34, 0.85);
+      --border-glow: rgba(168, 85, 247, 0.32);
+      --border-subtle: rgba(255, 255, 255, 0.09);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --grad-primary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%);
       --grad-btn: linear-gradient(135deg, #10b981 0%, #059669 100%);
       --accent-cyan: #38bdf8;
+      --accent-pink: #f472b6;
     }
 
     * {
@@ -34,17 +36,17 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg-main);
       background-image:
-        radial-gradient(circle at 15% 10%, rgba(139, 92, 246, 0.22), transparent 38%),
-        radial-gradient(circle at 85% 25%, rgba(236, 72, 153, 0.16), transparent 40%),
-        radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.12), transparent 45%);
+        radial-gradient(circle at 15% 10%, rgba(139, 92, 246, 0.24), transparent 38%),
+        radial-gradient(circle at 85% 25%, rgba(236, 72, 153, 0.18), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.14), transparent 45%);
       color: var(--text-main);
       line-height: 1.6;
-      padding: 20px 14px 50px;
+      padding: 20px 14px 54px;
       min-height: 100vh;
     }
 
     .container {
-      max-width: 720px;
+      max-width: 740px;
       margin: 0 auto;
     }
 
@@ -52,10 +54,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(17, 19, 30, 0.82);
+      background: rgba(17, 19, 30, 0.88);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 10px 16px;
+      border: 1px solid var(--border-subtle);
+      padding: 11px 16px;
       border-radius: 999px;
       margin-bottom: 22px;
     }
@@ -63,7 +65,7 @@
     .brand {
       font-weight: 800;
       font-size: 13px;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
       background: var(--grad-primary);
       -webkit-background-clip: text;
@@ -72,11 +74,12 @@
 
     .status-pill {
       font-size: 12px;
+      font-weight: 600;
       color: #6ee7b7;
-      background: rgba(16, 185, 129, 0.14);
-      padding: 3px 10px;
+      background: rgba(16, 185, 129, 0.15);
+      padding: 4px 11px;
       border-radius: 999px;
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      border: 1px solid rgba(16, 185, 129, 0.32);
     }
 
     .hero {
@@ -86,7 +89,7 @@
       border: 1px solid var(--border-glow);
       border-radius: 22px;
       padding: 28px 22px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
       overflow: hidden;
     }
@@ -106,17 +109,17 @@
       font-size: 12px;
       font-weight: 600;
       color: #e9d5ff;
-      background: rgba(139, 92, 246, 0.2);
-      border: 1px solid rgba(139, 92, 246, 0.4);
+      background: rgba(139, 92, 246, 0.22);
+      border: 1px solid rgba(139, 92, 246, 0.42);
       padding: 4px 12px;
       border-radius: 999px;
       margin-bottom: 14px;
     }
 
     h1 {
-      font-size: 31px;
+      font-size: 32px;
       font-weight: 800;
-      line-height: 1.2;
+      line-height: 1.18;
       margin-bottom: 10px;
       letter-spacing: -0.4px;
     }
@@ -125,6 +128,13 @@
       color: var(--text-muted);
       font-size: 15px;
       margin-bottom: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
     }
 
     .btn-telegram {
@@ -142,18 +152,58 @@
       box-shadow: 0 8px 22px rgba(16, 185, 129, 0.35);
     }
 
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #e2e8f0;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .stat-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 18px 0 20px;
+      margin-bottom: 20px;
     }
 
     .filter-btn {
-      padding: 8px 14px;
+      padding: 8px 15px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(20, 22, 34, 0.75);
+      background: rgba(20, 22, 34, 0.8);
       color: var(--text-muted);
       font-size: 13px;
       font-weight: 600;
@@ -162,19 +212,19 @@
     }
 
     .filter-btn.active {
-      background: rgba(139, 92, 246, 0.24);
-      border-color: rgba(168, 85, 247, 0.7);
+      background: rgba(139, 92, 246, 0.25);
+      border-color: rgba(168, 85, 247, 0.75);
       color: #ffffff;
     }
 
     .post-card {
       background: var(--bg-card);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+      border: 1px solid var(--border-subtle);
       border-radius: 18px;
       padding: 18px;
       margin-bottom: 20px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.42);
     }
 
     .post-card.hidden {
@@ -194,14 +244,14 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.6px;
-      color: #f472b6;
+      color: var(--accent-pink);
     }
 
     .mini-chip {
       font-size: 11px;
       color: var(--accent-cyan);
       background: rgba(56, 189, 248, 0.12);
-      padding: 2px 8px;
+      padding: 2px 9px;
       border-radius: 999px;
     }
 
@@ -228,7 +278,7 @@
     .media-frame video {
       width: 100%;
       display: block;
-      max-height: 440px;
+      max-height: 450px;
       object-fit: cover;
     }
 
@@ -237,7 +287,7 @@
       margin-top: 14px;
       font-size: 14px;
       font-weight: 700;
-      color: #38bdf8;
+      color: var(--accent-cyan);
       text-decoration: none;
     }
 
@@ -245,7 +295,7 @@
       text-align: center;
       margin-top: 32px;
       padding-top: 18px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid var(--border-subtle);
       color: var(--text-muted);
       font-size: 13px;
     }
@@ -262,27 +312,43 @@
       <span class="tag">✨ @ViralcontentVIP3_bot Hub</span>
       <h1>Viral Content Hub</h1>
       <p>
-        Watch short sample clips, browse 4K wallpapers, and open @ViralcontentVIP3_bot on Telegram
-        for full updates.
+        Watch trending short clips, explore 4K wallpapers, and jump straight into
+        @ViralcontentVIP3_bot on Telegram for full collections.
       </p>
-      <a
-        class="btn-telegram"
-        href="https://t.me/ViralcontentVIP3_bot"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        🚀 Open Telegram Bot
-      </a>
+      <div class="hero-actions">
+        <a
+          class="btn-telegram"
+          href="https://t.me/ViralcontentVIP3_bot"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          🚀 Open Telegram Bot
+        </a>
+        <a class="btn-secondary" href="#feed">Browse Previews ↓</a>
+      </div>
     </header>
 
-    <!-- Category Options -->
-    <div class="filter-bar" role="tablist" aria-label="Content options">
+    <section class="stats-strip" aria-label="Hub highlights">
+      <div class="stat-box">
+        <div class="stat-num">3 Clips</div>
+        <div class="stat-label">Video Previews</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2 Photos</div>
+        <div class="stat-label">4K Wallpapers</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Telegram Bot</div>
+      </div>
+    </section>
+
+    <div id="feed" class="filter-bar" role="tablist" aria-label="Content options">
       <button class="filter-btn active" type="button" onclick="filterCards('all', this)">All Options</button>
       <button class="filter-btn" type="button" onclick="filterCards('videos', this)">3 Videos</button>
       <button class="filter-btn" type="button" onclick="filterCards('photos', this)">Photos</button>
     </div>
 
-    <!-- Video 1 -->
     <article class="post-card" data-category="videos">
       <div class="post-meta">
         <span class="post-badge">Video Clip 01</span>
@@ -290,7 +356,7 @@
       </div>
       <h3>Trending Sample Clip 1</h3>
       <p>
-        Short sample clip preview. Tap play to watch or open @ViralcontentVIP3_bot for more.
+        Short sample clip preview. Tap play to watch or open @ViralcontentVIP3_bot for full updates.
       </p>
       <div class="media-frame">
         <video controls muted playsinline preload="metadata">
@@ -308,7 +374,6 @@
       </a>
     </article>
 
-    <!-- Video 2 -->
     <article class="post-card" data-category="videos">
       <div class="post-meta">
         <span class="post-badge">Video Clip 02</span>
@@ -316,7 +381,7 @@
       </div>
       <h3>Trending Sample Clip 2</h3>
       <p>
-        Second short preview clip. More updates and packs are available inside the Telegram bot.
+        Second short preview clip. More clips and packs are available inside the Telegram bot.
       </p>
       <div class="media-frame">
         <video controls muted playsinline preload="metadata">
@@ -334,7 +399,6 @@
       </a>
     </article>
 
-    <!-- Video 3 -->
     <article class="post-card" data-category="videos">
       <div class="post-meta">
         <span class="post-badge">Video Clip 03</span>
@@ -360,7 +424,6 @@
       </a>
     </article>
 
-    <!-- Photo 1 -->
     <article class="post-card" data-category="photos">
       <div class="post-meta">
         <span class="post-badge">Photo 01</span>
@@ -383,7 +446,6 @@
       </a>
     </article>
 
-    <!-- Photo 2 -->
     <article class="post-card" data-category="photos">
       <div class="post-meta">
         <span class="post-badge">Photo 02</span>
