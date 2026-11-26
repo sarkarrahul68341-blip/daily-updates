@@ -300,6 +300,13 @@
       object-fit: cover;
     }
 
+    .media-fallback {
+      padding: 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
     .post-action {
       display: inline-block;
       margin-top: 14px;
@@ -353,8 +360,8 @@
         <div class="stat-label">Video Previews</div>
       </div>
       <div class="stat-box">
-        <div class="stat-num">2 Photos</div>
-        <div class="stat-label">4K Wallpapers</div>
+        <div class="stat-num">3 Photos</div>
+        <div class="stat-label">HD Wallpapers</div>
       </div>
       <div class="stat-box">
         <div class="stat-num">24/7</div>
@@ -363,11 +370,12 @@
     </section>
 
     <div id="feed" class="filter-bar" role="tablist" aria-label="Content options">
-      <button class="filter-btn active" type="button" onclick="filterCards('all', this)">All Options</button>
-      <button class="filter-btn" type="button" onclick="filterCards('videos', this)">3 Videos</button>
-      <button class="filter-btn" type="button" onclick="filterCards('photos', this)">Photos</button>
+      <button class="filter-btn active" role="tab" aria-selected="true" type="button" onclick="filterCards('all', this)">All Options</button>
+      <button class="filter-btn" role="tab" aria-selected="false" type="button" onclick="filterCards('videos', this)">3 Videos</button>
+      <button class="filter-btn" role="tab" aria-selected="false" type="button" onclick="filterCards('photos', this)">3 Photos</button>
     </div>
 
+    <!-- VIDEO 1 -->
     <article class="post-card" data-category="videos">
       <div class="post-meta">
         <span class="post-badge">Video Clip 01</span>
@@ -378,7 +386,7 @@
         Short sample clip preview. Tap play to watch or open @ViralcontentVIP3_bot for full updates.
       </p>
       <div class="media-frame">
-        <video controls muted playsinline preload="metadata">
+        <video controls muted playsinline preload="metadata" onerror="handleMediaError(this, 'Video preview filhal load nahi ho paya.')">
           <source src="clip1.mp4" type="video/mp4" />
           Aapka browser video play nahi kar pa raha hai.
         </video>
@@ -394,6 +402,7 @@
       </a>
     </article>
 
+    <!-- VIDEO 2 -->
     <article class="post-card" data-category="videos">
       <div class="post-meta">
         <span class="post-badge">Video Clip 02</span>
@@ -404,7 +413,7 @@
         Second short preview clip. More clips and packs are available inside the Telegram bot.
       </p>
       <div class="media-frame">
-        <video controls muted playsinline preload="metadata">
+        <video controls muted playsinline preload="metadata" onerror="handleMediaError(this, 'Video preview filhal load nahi ho paya.')">
           <source src="clip2.mp4" type="video/mp4" />
           Aapka browser video play nahi kar pa raha hai.
         </video>
@@ -420,6 +429,7 @@
       </a>
     </article>
 
+    <!-- VIDEO 3 -->
     <article class="post-card" data-category="videos">
       <div class="post-meta">
         <span class="post-badge">Video Clip 03</span>
@@ -430,7 +440,7 @@
         Third short sample preview. Tap below to launch @ViralcontentVIP3_bot on Telegram.
       </p>
       <div class="media-frame">
-        <video controls muted playsinline preload="metadata">
+        <video controls muted playsinline preload="metadata" onerror="handleMediaError(this, 'Video preview filhal load nahi ho paya.')">
           <source src="clip3.mp4" type="video/mp4" />
           Aapka browser video play nahi kar pa raha hai.
         </video>
@@ -446,47 +456,73 @@
       </a>
     </article>
 
+    <!-- PHOTO BOX 1 (HD1.png) -->
     <article class="post-card" data-category="photos">
       <div class="post-meta">
         <span class="post-badge">Photo 01</span>
-        <span class="mini-chip">4K Wallpaper</span>
+        <span class="mini-chip">HD Wallpaper</span>
       </div>
-      <h3>4K Wallpaper Preview 1</h3>
+      <h3>HD Wallpaper Preview 1</h3>
       <p>
         Clean wallpaper preview for mobile and desktop screens. More items inside the bot.
       </p>
       <div class="media-frame">
-        <img src="wall1.jpg" alt="4K Wallpaper Preview 1" />
+        <img src="HD1.png" alt="HD Wallpaper Preview 1" onerror="handleMediaError(this, 'Wallpaper preview filhal load nahi ho paya.')" />
       </div>
       <a
         class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot?start=gh_wall1"
+        href="https://t.me/ViralcontentVIP3_bot?start=gh_hd1"
         target="_blank"
         rel="noopener noreferrer"
-        onclick="trackBotClick('wall1')"
+        onclick="trackBotClick('hd1')"
       >
         Get More in Bot →
       </a>
     </article>
 
+    <!-- PHOTO BOX 2 (HD2.png) -->
     <article class="post-card" data-category="photos">
       <div class="post-meta">
         <span class="post-badge">Photo 02</span>
-        <span class="mini-chip">4K Wallpaper</span>
+        <span class="mini-chip">HD Wallpaper</span>
       </div>
-      <h3>4K Wallpaper Preview 2</h3>
+      <h3>HD Wallpaper Preview 2</h3>
       <p>
         Second wallpaper preview. Open @ViralcontentVIP3_bot on Telegram for full collections.
       </p>
       <div class="media-frame">
-        <img src="wall2.jpg" alt="4K Wallpaper Preview 2" />
+        <img src="HD2.png" alt="HD Wallpaper Preview 2" onerror="handleMediaError(this, 'Wallpaper preview filhal load nahi ho paya.')" />
       </div>
       <a
         class="post-action"
-        href="https://t.me/ViralcontentVIP3_bot?start=gh_wall2"
+        href="https://t.me/ViralcontentVIP3_bot?start=gh_hd2"
         target="_blank"
         rel="noopener noreferrer"
-        onclick="trackBotClick('wall2')"
+        onclick="trackBotClick('hd2')"
+      >
+        Get More in Bot →
+      </a>
+    </article>
+
+    <!-- PHOTO BOX 3 (HD3.png) -->
+    <article class="post-card" data-category="photos">
+      <div class="post-meta">
+        <span class="post-badge">Photo 03</span>
+        <span class="mini-chip">HD Wallpaper</span>
+      </div>
+      <h3>HD Wallpaper Preview 3</h3>
+      <p>
+        Third wallpaper preview. Tap below to unlock the full HD collection inside the bot.
+      </p>
+      <div class="media-frame">
+        <img src="HD3.png" alt="HD Wallpaper Preview 3" onerror="handleMediaError(this, 'Wallpaper preview filhal load nahi ho paya.')" />
+      </div>
+      <a
+        class="post-action"
+        href="https://t.me/ViralcontentVIP3_bot?start=gh_hd3"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="trackBotClick('hd3')"
       >
         Get More in Bot →
       </a>
@@ -504,9 +540,11 @@
 
       buttons.forEach(function (btn) {
         btn.classList.remove("active");
+        btn.setAttribute("aria-selected", "false");
       });
       if (clickedBtn) {
         clickedBtn.classList.add("active");
+        clickedBtn.setAttribute("aria-selected", "true");
       }
 
       cards.forEach(function (card) {
@@ -518,6 +556,27 @@
         }
       });
     }
+
+    function handleMediaError(el, message) {
+      var frame = el.closest(".media-frame");
+      if (frame && !frame.querySelector(".media-fallback")) {
+        var notice = document.createElement("div");
+        notice.className = "media-fallback";
+        notice.textContent = message;
+        frame.innerHTML = "";
+        frame.appendChild(notice);
+      }
+    }
+
+    document.addEventListener("play", function (e) {
+      if (e.target && e.target.tagName === "VIDEO") {
+        document.querySelectorAll("video").forEach(function (vid) {
+          if (vid !== e.target) {
+            vid.pause();
+          }
+        });
+      }
+    }, true);
   </script>
 </body>
 </html>
