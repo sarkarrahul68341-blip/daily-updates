@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Viral Content Hub — Telegram Bot &amp; Previews</title>
+  <title>Viral Content — Telegram Bot &amp; Previews</title>
   <meta name="google-site-verification" content="t5obEuxFK29Uq4aOwpXE-OkndDZ8p9qI6kNItoKeASo" />
   <style>
     :root {
@@ -187,7 +187,6 @@
     .post-card h3 { font-size: 18px; margin-bottom: 6px; }
     .post-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 14px; }
 
-    /* Private reel style ghola preview while locked */
     .reel-lock-wrap {
       position: relative;
       width: 100%;
@@ -195,10 +194,10 @@
       overflow: hidden;
       border: 1px solid rgba(245, 158, 11, 0.45);
       background: #070912;
-      min-height: 270px;
+      min-height: 290px;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .reel-bg-video {
@@ -207,29 +206,54 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: blur(22px) brightness(0.65) saturate(135%);
-      transform: scale(1.12);
+      filter: blur(16px) brightness(0.85) saturate(140%);
+      transform: scale(1.1);
+      z-index: 0;
+    }
+
+    .reel-ghola-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(168, 85, 247, 0.24), transparent 55%),
+        radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.24), transparent 60%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .reel-ghola-swirl {
       position: absolute;
-      width: 280px;
-      height: 280px;
-      top: 50%;
+      width: 260px;
+      height: 260px;
+      top: 32%;
       left: 50%;
       transform: translate(-50%, -50%);
       border-radius: 50%;
       background: conic-gradient(
         from 0deg,
-        rgba(168, 85, 247, 0.45),
-        rgba(236, 72, 153, 0.45),
-        rgba(245, 158, 11, 0.4),
-        rgba(56, 189, 248, 0.35),
-        rgba(168, 85, 247, 0.45)
+        rgba(168, 85, 247, 0.36),
+        rgba(236, 72, 153, 0.36),
+        rgba(245, 158, 11, 0.32),
+        rgba(56, 189, 248, 0.28),
+        rgba(168, 85, 247, 0.36)
       );
-      filter: blur(28px);
+      filter: blur(24px);
       animation: glassSwirl 6.5s linear infinite;
       pointer-events: none;
+      z-index: 1;
+    }
+
+    .top-ghola-hint {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 12px 10px 4px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fde68a;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.85);
     }
 
     .lock-content {
@@ -237,29 +261,29 @@
       z-index: 2;
       width: 92%;
       max-width: 440px;
-      margin: 18px auto;
-      padding: 18px 14px;
+      margin: 8px auto 14px;
+      padding: 14px 12px;
       text-align: center;
       border-radius: 12px;
-      background: rgba(9, 11, 20, 0.68);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(9, 11, 20, 0.34);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
     }
 
-    .lock-title { font-size: 15px; font-weight: 700; color: #fde68a; margin-bottom: 6px; }
-    .lock-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .lock-title { font-size: 14px; font-weight: 700; color: #fde68a; margin-bottom: 4px; }
+    .lock-sub { font-size: 12px; color: #f8fafc; margin-bottom: 8px; }
 
     .pin-show-badge {
       display: inline-block;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       color: #a7f3d0;
-      background: rgba(16, 185, 129, 0.18);
-      border: 1px solid rgba(16, 185, 129, 0.42);
-      padding: 4px 12px;
+      background: rgba(16, 185, 129, 0.24);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      padding: 3px 11px;
       border-radius: 999px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .pin-row {
@@ -267,15 +291,15 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .pin-input {
-      width: 110px;
-      padding: 10px 12px;
+      width: 105px;
+      padding: 9px 11px;
       border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      background: #07070c;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(7, 7, 12, 0.78);
       color: #ffffff;
       font-size: 15px;
       text-align: center;
@@ -283,7 +307,7 @@
     }
 
     .pin-btn {
-      padding: 10px 16px;
+      padding: 9px 15px;
       border-radius: 10px;
       border: none;
       background: var(--grad-primary);
@@ -297,7 +321,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 16px;
+      padding: 9px 15px;
       border-radius: 10px;
       text-decoration: none;
       background: var(--grad-buy);
@@ -323,7 +347,6 @@
       object-fit: cover;
     }
 
-    /* Optional ghola glass toggle after unlock */
     .optional-glass {
       position: absolute;
       inset: 0;
@@ -359,7 +382,7 @@
       cursor: pointer;
     }
 
-    .pin-error { font-size: 12px; color: #fca5a5; min-height: 18px; }
+    .pin-error { font-size: 12px; color: #fca5a5; min-height: 16px; }
     .hidden { display: none !important; }
 
     .post-action {
@@ -388,41 +411,44 @@
 
   <div class="container">
     <div class="topbar">
-      <span class="brand">Viral Content Hub</span>
+      <span class="brand">Viral Content</span>
       <span class="status-pill">● Bot Active</span>
     </div>
 
     <header class="hero">
-      <h1>Viral Content Hub</h1>
-      <p>Photo open hai, aur private reel style video unlock karne ke liye PIN <strong>123</strong> likhein ya Buy Now dabayein.</p>
+      <h1>Viral Content</h1>
+      <p>Photo open hai, aur videos unlock karne ke liye PIN <strong>123</strong> likhein ya Buy Now dabayein.</p>
       <a class="btn-telegram" href="https://t.me/ViralcontentVIP3_bot?start=gh_hub" target="_blank" rel="noopener noreferrer">
         🚀 Open Telegram Bot
       </a>
     </header>
 
-    <!-- Open Photo Card (HD1.png) -->
+    <!-- Box 1: Open Photo Card (HD1.png) -->
     <article class="post-card">
       <div class="media-frame">
         <img src="HD1.png" alt="HD1" />
       </div>
     </article>
 
-    <!-- Locked Video Card (HD2.mp4) -->
+    <!-- Box 2: Locked Video Card (HD2.mp4) -->
     <article class="post-card">
       <div class="post-meta">
-        <span class="post-badge">Video Clip 01</span>
+        <span class="post-badge">Box 02 · Video Clip 01</span>
         <span class="mini-chip">🔒 Private Preview</span>
       </div>
       <h3>Trending Sample Clip (HD2)</h3>
-      <p>Lock mein ghola-ghola dikhega; PIN <strong>123</strong> daalte hi video saaf aur play hoga.</p>
+      <p>Upar se ghola-ghola preview dikhega; PIN <strong>123</strong> daalte hi video saaf aur play hoga.</p>
 
       <div id="lock-v1" class="reel-lock-wrap">
         <video class="reel-bg-video" autoplay muted loop playsinline preload="metadata" src="HD2.mp4"></video>
+        <div class="reel-ghola-layer" aria-hidden="true"></div>
         <div class="reel-ghola-swirl" aria-hidden="true"></div>
 
+        <div class="top-ghola-hint">🌫️ Ghola Reel Preview · Unlock ke liye PIN 123 likhein</div>
+
         <div class="lock-content">
-          <div class="lock-title">🔒 Private Clip Ghola Preview</div>
-          <div class="lock-sub">PIN 123 daal kar saaf video dekhein</div>
+          <div class="lock-title">🔒 Private Clip Locked</div>
+          <div class="lock-sub">Saaf video dekhne ke liye PIN 123 daalein</div>
           <div class="pin-show-badge">PIN: 123</div>
           <div class="pin-row">
             <input
@@ -468,8 +494,72 @@
       </a>
     </article>
 
+    <!-- Box 3 (Sabse Neeche): Video 3.mp4 -->
+    <article class="post-card">
+      <div class="post-meta">
+        <span class="post-badge">Box 03 · Video 3</span>
+        <span class="mini-chip">🔒 Private Preview</span>
+      </div>
+      <h3>Bonus Reel (Video 3)</h3>
+      <p>Sabse neeche waala box: PIN <strong>123</strong> daalte hi <strong>Video 3.mp4</strong> unlock aur play hoga.</p>
+
+      <div id="lock-v3" class="reel-lock-wrap">
+        <video class="reel-bg-video" autoplay muted loop playsinline preload="metadata" src="Video%203.mp4"></video>
+        <div class="reel-ghola-layer" aria-hidden="true"></div>
+        <div class="reel-ghola-swirl" aria-hidden="true"></div>
+
+        <div class="top-ghola-hint">🌫️ Ghola Reel Preview · Unlock ke liye PIN 123 likhein</div>
+
+        <div class="lock-content">
+          <div class="lock-title">🔒 Video 3 Locked</div>
+          <div class="lock-sub">Saaf video dekhne ke liye PIN 123 daalein</div>
+          <div class="pin-show-badge">PIN: 123</div>
+          <div class="pin-row">
+            <input
+              id="pin-input-v3"
+              class="pin-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="6"
+              placeholder="123"
+              oninput="checkPin('v3')"
+            />
+            <button class="pin-btn" type="button" onclick="checkPin('v3', true)">Unlock</button>
+            <a
+              class="buy-now-btn"
+              href="https://t.me/ViralcontentVIP3_bot?start=buy_video3"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Buy Now
+            </a>
+          </div>
+          <div id="pin-err-v3" class="pin-error"></div>
+        </div>
+      </div>
+
+      <div id="player-v3" class="hidden">
+        <div class="media-frame">
+          <div id="glass-v3" class="optional-glass" aria-hidden="true"></div>
+          <video id="vid-v3" controls playsinline preload="metadata" src="Video%203.mp4">
+            Aapka browser video play nahi kar pa raha hai.
+          </video>
+        </div>
+        <div class="video-toolbar">
+          <button id="glass-btn-v3" class="glass-toggle-btn" type="button" onclick="toggleGlass('v3')">
+            🌫️ Ghola Glass
+          </button>
+          <button class="lock-again-btn" type="button" onclick="lockVideo('v3')">🔒 Lock Again</button>
+        </div>
+      </div>
+
+      <a class="post-action" href="https://t.me/ViralcontentVIP3_bot?start=gh_video3" target="_blank" rel="noopener noreferrer">
+        Open @ViralcontentVIP3_bot →
+      </a>
+    </article>
+
     <footer class="footer">
-      Viral Content Hub · Telegram Bot: @ViralcontentVIP3_bot
+      Viral Content · Telegram Bot: @ViralcontentVIP3_bot
     </footer>
   </div>
 
