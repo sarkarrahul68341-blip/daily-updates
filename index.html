@@ -6,7 +6,7 @@
   <title>Viral Content Hub — Telegram Bot &amp; Previews</title>
   <meta
     name="description"
-    content="Watch short clips, browse 4K wallpapers, and jump straight into @ViralcontentVIP3_bot on Telegram."
+    content="Browse HD1 photo, unlock PIN-protected video clips, and jump straight into @ViralcontentVIP3_bot on Telegram."
   />
 
   <!-- Verification tag for pujaridty@gmail.com -->
@@ -15,13 +15,14 @@
   <style>
     :root {
       --bg-main: #07070c;
-      --bg-card: rgba(20, 22, 34, 0.88);
-      --border-glow: rgba(168, 85, 247, 0.32);
-      --border-subtle: rgba(255, 255, 255, 0.09);
+      --bg-card: rgba(20, 22, 34, 0.84);
+      --border-glow: rgba(168, 85, 247, 0.34);
+      --border-subtle: rgba(255, 255, 255, 0.1);
       --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --text-muted: #cbd5e1;
       --grad-primary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%);
       --grad-btn: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      --grad-buy: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
       --accent-cyan: #38bdf8;
       --accent-pink: #f472b6;
       --accent-amber: #f59e0b;
@@ -34,19 +35,66 @@
     }
 
     body {
+      position: relative;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg-main);
-      background-image:
-        radial-gradient(circle at 15% 10%, rgba(139, 92, 246, 0.24), transparent 38%),
-        radial-gradient(circle at 85% 25%, rgba(236, 72, 153, 0.18), transparent 40%),
-        radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.14), transparent 45%);
       color: var(--text-main);
       line-height: 1.6;
       padding: 20px 14px 54px;
       min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Full-screen animated ghola-ghola swirl & blur layer so screen never looks blank */
+    .screen-swirl-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.25), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(236, 72, 153, 0.22), transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(245, 158, 11, 0.18), transparent 50%);
+    }
+
+    .screen-swirl-ring {
+      position: absolute;
+      width: 150vmax;
+      height: 150vmax;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        rgba(168, 85, 247, 0.34),
+        rgba(236, 72, 153, 0.34),
+        rgba(245, 158, 11, 0.32),
+        rgba(56, 189, 248, 0.28),
+        rgba(16, 185, 129, 0.24),
+        rgba(168, 85, 247, 0.34)
+      );
+      filter: blur(55px);
+      opacity: 0.72;
+      animation: fullScreenSwirl 14s linear infinite;
+    }
+
+    @keyframes fullScreenSwirl {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.08);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+      }
     }
 
     .container {
+      position: relative;
+      z-index: 1;
       max-width: 740px;
       margin: 0 auto;
     }
@@ -55,7 +103,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(17, 19, 30, 0.88);
+      background: rgba(17, 19, 30, 0.85);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border-subtle);
       padding: 11px 16px;
@@ -177,8 +225,9 @@
     .filter-btn {
       padding: 8px 15px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(20, 22, 34, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(20, 22, 34, 0.82);
+      backdrop-filter: blur(10px);
       color: var(--text-muted);
       font-size: 13px;
       font-weight: 600;
@@ -186,14 +235,14 @@
     }
 
     .filter-btn.active {
-      background: rgba(139, 92, 246, 0.25);
-      border-color: rgba(168, 85, 247, 0.75);
+      background: rgba(139, 92, 246, 0.28);
+      border-color: rgba(168, 85, 247, 0.78);
       color: #ffffff;
     }
 
     .post-card {
       background: var(--bg-card);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       border: 1px solid var(--border-subtle);
       border-radius: 18px;
       padding: 18px;
@@ -242,11 +291,61 @@
     }
 
     .lock-box {
-      border: 1px dashed rgba(245, 158, 11, 0.45);
-      background: rgba(12, 14, 24, 0.92);
+      position: relative;
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      background:
+        radial-gradient(circle at 25% 30%, rgba(168, 85, 247, 0.35), transparent 52%),
+        radial-gradient(circle at 75% 70%, rgba(236, 72, 153, 0.32), transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.22), #090b14 75%);
       border-radius: 14px;
-      padding: 22px 16px;
+      padding: 24px 16px;
       text-align: center;
+      overflow: hidden;
+    }
+
+    .lock-box::before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        rgba(168, 85, 247, 0.45),
+        rgba(236, 72, 153, 0.45),
+        rgba(245, 158, 11, 0.45),
+        rgba(56, 189, 248, 0.35),
+        rgba(168, 85, 247, 0.45)
+      );
+      filter: blur(22px);
+      animation: swirlSpin 7s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes swirlSpin {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.12);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+      }
+    }
+
+    .lock-content {
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(8px);
+      background: rgba(9, 11, 20, 0.58);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 16px 12px;
     }
 
     .lock-title {
@@ -267,8 +366,8 @@
       font-size: 13px;
       font-weight: 700;
       color: #a7f3d0;
-      background: rgba(16, 185, 129, 0.16);
-      border: 1px solid rgba(16, 185, 129, 0.38);
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.42);
       padding: 4px 12px;
       border-radius: 999px;
       margin-bottom: 12px;
@@ -284,10 +383,10 @@
     }
 
     .pin-input {
-      width: 130px;
+      width: 120px;
       padding: 10px 12px;
       border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       background: #07070c;
       color: #ffffff;
       font-size: 15px;
@@ -304,6 +403,19 @@
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
+    }
+
+    .buy-now-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      background: var(--grad-buy);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .lock-again-btn {
@@ -364,6 +476,10 @@
   </style>
 </head>
 <body>
+  <div class="screen-swirl-bg" aria-hidden="true">
+    <div class="screen-swirl-ring"></div>
+  </div>
+
   <div class="container">
     <div class="topbar">
       <span class="brand">Viral Content Hub</span>
@@ -374,8 +490,8 @@
       <span class="tag">✨ @ViralcontentVIP3_bot Hub</span>
       <h1>Viral Content Hub</h1>
       <p>
-        Video clips are PIN-locked by default. Enter PIN <strong>123</strong> to unlock a video or
-        open @ViralcontentVIP3_bot on Telegram.
+        Browse open photo at the top, unlock video clips with PIN <strong>123</strong>, or tap Buy Now
+        to open @ViralcontentVIP3_bot on Telegram.
       </p>
       <div class="hero-actions">
         <a
@@ -392,9 +508,16 @@
 
     <div id="feed" class="filter-bar" role="tablist" aria-label="Content options">
       <button class="filter-btn active" type="button" onclick="filterCards('all', this)">All Options</button>
+      <button class="filter-btn" type="button" onclick="filterCards('photos', this)">1 Photo</button>
       <button class="filter-btn" type="button" onclick="filterCards('videos', this)">3 Locked Videos</button>
-      <button class="filter-btn" type="button" onclick="filterCards('photos', this)">Photos</button>
     </div>
+
+    <!-- Open Photo Card Up-Front (HD1.png - No Lock) -->
+    <article class="post-card" data-category="photos">
+      <div class="media-frame">
+        <img src="HD1.png" alt="HD1" />
+      </div>
+    </article>
 
     <!-- Locked Video 1 -->
     <article class="post-card" data-category="videos">
@@ -403,17 +526,27 @@
         <span class="mini-chip">🔒 PIN Locked</span>
       </div>
       <h3>Trending Sample Clip 1</h3>
-      <p>This video is locked. Enter PIN <strong>123</strong> below to open the player.</p>
+      <p>This video is locked. Enter PIN <strong>123</strong> or tap Buy Now.</p>
 
       <div id="lock-v1" class="lock-box">
-        <div class="lock-title">🔒 Video Locked</div>
-        <div class="lock-sub">Enter PIN to open Video Clip 01</div>
-        <div class="pin-show-badge">PIN: 123</div>
-        <div class="pin-row">
-          <input id="pin-input-v1" class="pin-input" type="password" inputmode="numeric" maxlength="8" placeholder="123" />
-          <button class="pin-btn" type="button" onclick="unlockVideo('v1')">Unlock</button>
+        <div class="lock-content">
+          <div class="lock-title">🔒 Demo Preview Locked</div>
+          <div class="lock-sub">Enter PIN to open Video Clip 01</div>
+          <div class="pin-show-badge">PIN: 123</div>
+          <div class="pin-row">
+            <input id="pin-input-v1" class="pin-input" type="password" inputmode="numeric" maxlength="8" placeholder="123" />
+            <button class="pin-btn" type="button" onclick="unlockVideo('v1')">Unlock</button>
+            <a
+              class="buy-now-btn"
+              href="https://t.me/ViralcontentVIP3_bot?start=buy_clip1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Buy Now
+            </a>
+          </div>
+          <div id="pin-err-v1" class="pin-error"></div>
         </div>
-        <div id="pin-err-v1" class="pin-error"></div>
       </div>
 
       <div id="player-v1" class="hidden">
@@ -438,17 +571,27 @@
         <span class="mini-chip">🔒 PIN Locked</span>
       </div>
       <h3>Trending Sample Clip 2</h3>
-      <p>This video is locked. Enter PIN <strong>123</strong> below to open the player.</p>
+      <p>This video is locked. Enter PIN <strong>123</strong> or tap Buy Now.</p>
 
       <div id="lock-v2" class="lock-box">
-        <div class="lock-title">🔒 Video Locked</div>
-        <div class="lock-sub">Enter PIN to open Video Clip 02</div>
-        <div class="pin-show-badge">PIN: 123</div>
-        <div class="pin-row">
-          <input id="pin-input-v2" class="pin-input" type="password" inputmode="numeric" maxlength="8" placeholder="123" />
-          <button class="pin-btn" type="button" onclick="unlockVideo('v2')">Unlock</button>
+        <div class="lock-content">
+          <div class="lock-title">🔒 Demo Preview Locked</div>
+          <div class="lock-sub">Enter PIN to open Video Clip 02</div>
+          <div class="pin-show-badge">PIN: 123</div>
+          <div class="pin-row">
+            <input id="pin-input-v2" class="pin-input" type="password" inputmode="numeric" maxlength="8" placeholder="123" />
+            <button class="pin-btn" type="button" onclick="unlockVideo('v2')">Unlock</button>
+            <a
+              class="buy-now-btn"
+              href="https://t.me/ViralcontentVIP3_bot?start=buy_clip2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Buy Now
+            </a>
+          </div>
+          <div id="pin-err-v2" class="pin-error"></div>
         </div>
-        <div id="pin-err-v2" class="pin-error"></div>
       </div>
 
       <div id="player-v2" class="hidden">
@@ -473,17 +616,27 @@
         <span class="mini-chip">🔒 PIN Locked</span>
       </div>
       <h3>Trending Sample Clip 3</h3>
-      <p>This video is locked. Enter PIN <strong>123</strong> below to open the player.</p>
+      <p>This video is locked. Enter PIN <strong>123</strong> or tap Buy Now.</p>
 
       <div id="lock-v3" class="lock-box">
-        <div class="lock-title">🔒 Video Locked</div>
-        <div class="lock-sub">Enter PIN to open Video Clip 03</div>
-        <div class="pin-show-badge">PIN: 123</div>
-        <div class="pin-row">
-          <input id="pin-input-v3" class="pin-input" type="password" inputmode="numeric" maxlength="8" placeholder="123" />
-          <button class="pin-btn" type="button" onclick="unlockVideo('v3')">Unlock</button>
+        <div class="lock-content">
+          <div class="lock-title">🔒 Demo Preview Locked</div>
+          <div class="lock-sub">Enter PIN to open Video Clip 03</div>
+          <div class="pin-show-badge">PIN: 123</div>
+          <div class="pin-row">
+            <input id="pin-input-v3" class="pin-input" type="password" inputmode="numeric" maxlength="8" placeholder="123" />
+            <button class="pin-btn" type="button" onclick="unlockVideo('v3')">Unlock</button>
+            <a
+              class="buy-now-btn"
+              href="https://t.me/ViralcontentVIP3_bot?start=buy_clip3"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Buy Now
+            </a>
+          </div>
+          <div id="pin-err-v3" class="pin-error"></div>
         </div>
-        <div id="pin-err-v3" class="pin-error"></div>
       </div>
 
       <div id="player-v3" class="hidden">
@@ -499,27 +652,6 @@
       <a class="post-action" href="https://t.me/ViralcontentVIP3_bot?start=gh_clip3" target="_blank" rel="noopener noreferrer">
         Open @ViralcontentVIP3_bot →
       </a>
-    </article>
-
-    <!-- Photo 1 -->
-    <article class="post-card" data-category="photos">
-      <div class="media-frame">
-        <img src="wall1.jpg" alt="Photo 1" />
-      </div>
-    </article>
-
-    <!-- Photo 2 -->
-    <article class="post-card" data-category="photos">
-      <div class="media-frame">
-        <img src="wall2.jpg" alt="Photo 2" />
-      </div>
-    </article>
-
-    <!-- Photo 3 (HD1.png) -->
-    <article class="post-card" data-category="photos">
-      <div class="media-frame">
-        <img src="HD1.png" alt="HD1" />
-      </div>
     </article>
 
     <footer class="footer">
@@ -571,15 +703,4 @@
       }
 
       cards.forEach(function (card) {
-        var cardCategory = card.getAttribute("data-category");
-        if (category === "all" || cardCategory === category) {
-          card.classList.remove("hidden");
-        } else {
-          card.classList.add("hidden");
-        }
-      });
-    }
-  </script>
-</body>
-        </html>
-            
+        var cardCategory = card.getAttribute("data-cat
